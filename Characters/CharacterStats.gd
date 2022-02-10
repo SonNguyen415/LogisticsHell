@@ -5,6 +5,8 @@ class_name CharacterStats
 
 
 # General Stats
+export (int) var tier # 3star, 4star, 5star...
+
 export (int) var health
 export (int) var luck
 
