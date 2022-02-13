@@ -12,9 +12,10 @@ func set_speed(ticks_per_hour):
 	self.ticks_in_hour = ticks_per_hour
 
 func _process(delta):
+	# Adds an hour to current date every ticks_in_hour seconds
 	summary_delta += delta
-	while summary_delta >= 1:
-		summary_delta -= 1
+	while summary_delta >= ticks_in_hour:
+		summary_delta -= ticks_in_hour
 		add_hour()
 
 func add_hour():
