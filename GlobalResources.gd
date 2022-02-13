@@ -4,17 +4,17 @@ var cash = 10000
 var manpower = 10000
 var connections = 100
 
-var tax_rate = 10
-var human_recruitment = 10
+const tax_rate = 10
+const human_recruitment = 10
 
 
-var medical_convoy_production = 100
-var medicine_production = 100
-var hygiene_production = 1000
-var food_production = 1000
-var ammunition_production = 1000
-var weapon_production = 100
-var cloth_production = 100
+const medical_convoy_production = 100
+const medicine_production = 100
+const hygiene_production = 1000
+const food_production = 1000
+const ammunition_production = 1000
+const weapon_production = 100
+const cloth_production = 100
 
 
 func on_tick():

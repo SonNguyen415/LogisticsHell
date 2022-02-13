@@ -8,8 +8,8 @@ var seconds_per_tick = 1
 
 var current_date = [999, 41, 1] #Year, Date, Hour
 
-var hours_in_day = 24
-var days_in_year = 300
+const hours_in_day = 24
+const days_in_year = 300
 var summary_delta = 0
 
 signal tick_generated()
