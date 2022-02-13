@@ -20,6 +20,7 @@ export (int) var quartermaster
 export (int) var hospital_management
 export (int) var transportation
 export (int) var innovation
+export (int) var recruitment
 
 
 # General Stats 
