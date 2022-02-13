@@ -13,10 +13,8 @@ var cloth_buildings = 0
 
 
 
-
 (export) var tax_office = 0
 (export) var recruitment_center = 0
-
 
 func construct_building():
 	building_count += 1
