@@ -24,8 +24,7 @@ var human_recruitment = HUMAN_RECRUITMENT
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Time.connect("tick_generated", self, "on_tick")
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
