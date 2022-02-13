@@ -11,6 +11,10 @@ var current_date = [999, 41, 1] #Year, Date, Hour
 var hours_in_day = 24
 var days_in_year = 300
 var summary_delta = 0
+
+signal tick_generated()
+
+
 func set_speed(ticks_per_hour):
 	self.ticks_in_hour = ticks_per_hour
 
@@ -20,6 +24,7 @@ func _process(delta):
 	while summary_delta >= ticks_in_hour:
 		summary_delta -= ticks_in_hour
 		add_hour()
+		emit_signal("tick_generated")
 
 func add_hour():
 	current_date[2] += 1
