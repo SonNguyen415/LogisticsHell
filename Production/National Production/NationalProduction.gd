@@ -1,12 +1,15 @@
 extends Node2D
 
+var building_count = 0
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var medical_convoy_buildings = 0
+var medicine_buildings = 0
+var hygiene_buildings = 0
+var food_buildings = 0
+var ammunition_buildings = 0
+var weapon_buildings = 0
+var cloth_buildings = 0
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
