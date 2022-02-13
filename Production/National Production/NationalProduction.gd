@@ -15,7 +15,6 @@ var cloth_buildings = 0
 var recruitment_center = 0
 
 
-
 func construct_building():
 	building_count += 1
 	idle_buildings += 1
@@ -26,6 +25,10 @@ func allocate_building(building):
 		building += 1
 	else:
 		pass
+		
+		
+
+
 
 
 func _ready():
