@@ -17,13 +17,13 @@ var weapon_production = 100
 var cloth_production = 100
 
 
-func _process():
+func on_tick():
 	cash += 10
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Time.connect("tick_generated", self, "on_tick")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
