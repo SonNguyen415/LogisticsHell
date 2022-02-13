@@ -7,6 +7,8 @@ var movement_reduction = 0
 var postionX = 0
 var positionY = 0
 
+var maintenance_cost = 10
+
 
 var selected = false
 onready var army_value_display = $Control/ArmyCount
