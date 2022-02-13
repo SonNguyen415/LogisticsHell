@@ -26,6 +26,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Time="*res://Time.gd"
+GlobalResources="*res://GlobalResources.gd"
 
 [physics]
 
