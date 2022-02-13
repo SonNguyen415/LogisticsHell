@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var financial_officer 
+var financial_officer = Characters.debug_QA
 
 # Total number of buildings you have
 var building_count = 0
@@ -42,10 +42,8 @@ func allocate_building(building):
 		
 # Every tick, we increase resources, this is represented as income
 func change_global_resources():
-	GlobalResources.cash += GlobalResources.tax_rate
-	GlobalResources.manpower += GlobalResources.recruitment_rate*(recruitment_center+1)
-	
-	
+	GlobalResources.cash += GlobalResources.tax_rate * (1 + financial_officer.financial_management / 100)
+	GlobalResources.manpower += GlobalResources.recruitment_rate*(recruitment_center+1) * (1 + financial_officer.recruitment / 100)
 	
 
 func on_tick():
