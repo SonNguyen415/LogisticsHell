@@ -1,8 +1,8 @@
 extends Node
 
-var cash = 10000
-var manpower = 10000
-var connections = 100
+(export) var cash = 10000
+(export) var manpower = 10000
+(export) var connections = 100
 
 const tax_rate = 10
 const human_recruitment = 10

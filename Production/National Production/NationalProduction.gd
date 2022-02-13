@@ -12,7 +12,10 @@ var weapon_buildings = 0
 var cloth_buildings = 0
 
 
-var recruitment_center = 0
+
+
+(export) var tax_office = 0
+(export) var recruitment_center = 0
 
 
 func construct_building():
@@ -27,7 +30,6 @@ func allocate_building(building):
 		pass
 		
 		
-
 
 
 
