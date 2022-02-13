@@ -33,7 +33,8 @@ func allocate_building(building):
 		
 		
 func on_tick():
-	cash += 1
+	cash += tax_rate*(tax_office+1)
+	manpower += human_recruitment*(recruitment_center+1)
 
 
 func _ready():
