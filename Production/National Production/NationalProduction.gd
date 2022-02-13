@@ -23,6 +23,7 @@ func construct_building():
 func allocate_building(building):
 	if(idle_buildings > 0):
 		building += 1
+		idle_buildings -= 1
 	else:
 		pass
 		
