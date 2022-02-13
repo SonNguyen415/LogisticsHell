@@ -42,7 +42,7 @@ func allocate_building(building):
 		
 # Every tick, we increase resources, this is represented as income
 func change_global_resources():
-	GlobalResources.cash += GlobalResources.tax_rate - maintenance_cost
+	GlobalResources.cash += GlobalResources.tax_rate
 	GlobalResources.manpower += GlobalResources.recruitment_rate*(recruitment_center+1)
 	
 	
