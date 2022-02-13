@@ -15,6 +15,7 @@ quartermaster = -1
 hospital_management = -1
 transportation = -1
 innovation = -1
+recruitment = -20
 logistics = -1
 offense = 0
 defense = 0
