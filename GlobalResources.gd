@@ -1,9 +1,11 @@
 extends Node
 
+# Player's Resources
 var cash = 10000
 var manpower = 10000
 var connections = 100
 
+# Constant (Base) Production Values
 const TAX_RATE = 10
 const HUMAN_RECRUITMENT = 10
 
@@ -19,13 +21,3 @@ const CLOTH_PRODUCTION = 100
 var tax_rate = TAX_RATE
 var recruitment_rate = HUMAN_RECRUITMENT
 
-
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
