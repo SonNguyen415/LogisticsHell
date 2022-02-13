@@ -1,10 +1,5 @@
 extends Node2D
 
-
-
-
-
-
 var building_count = 0
 
 var idle_buildings = 0
@@ -33,7 +28,7 @@ func allocate_building(building):
 		
 		
 func on_tick():
-	cash += 1
+	GlobalResources.cash += 1
 
 
 func _ready():
