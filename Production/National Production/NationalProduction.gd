@@ -1,5 +1,6 @@
 extends Node2D
 
+
 var building_count = 0
 
 var idle_buildings = 0
@@ -11,9 +12,8 @@ var ammunition_buildings = 0
 var weapon_buildings = 0
 var cloth_buildings = 0
 
-
-var tax_office = 0
 var recruitment_center = 0
+
 
 func construct_building():
 	building_count += 1
@@ -29,7 +29,8 @@ func allocate_building(building):
 		
 		
 func on_tick():
-	GlobalResources.cash += 1
+	GlobalResources.cash += GlobalResources.tax_rate
+	GlobalResources.manpower += GlobalResources.recruitment_rate*(recruitment_center+1)
 
 
 

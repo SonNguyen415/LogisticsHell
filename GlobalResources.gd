@@ -17,7 +17,7 @@ const WEAPON_PRODUCTION = 100
 const CLOTH_PRODUCTION = 100
 
 var tax_rate = TAX_RATE
-var human_recruitment = HUMAN_RECRUITMENT
+var recruitment_rate = HUMAN_RECRUITMENT
 
 
 
