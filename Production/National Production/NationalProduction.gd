@@ -21,7 +21,7 @@ var recruitment_center = 0
 
 
 
-
+# Build a new building
 func construct_building():
 	building_count += 1
 	idle_buildings += 1

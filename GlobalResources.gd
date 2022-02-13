@@ -18,6 +18,9 @@ const AMMUNITION_PRODUCTION = 1000
 const WEAPON_PRODUCTION = 100
 const CLOTH_PRODUCTION = 100
 
+
+
+# Initialize our income as equal to the constants
 var tax_rate = TAX_RATE
 var recruitment_rate = HUMAN_RECRUITMENT
 
