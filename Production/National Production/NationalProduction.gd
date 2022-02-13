@@ -1,10 +1,5 @@
 extends Node2D
 
-
-
-
-
-
 var building_count = 0
 
 var idle_buildings = 0
@@ -28,13 +23,14 @@ func construct_building():
 func allocate_building(building):
 	if(idle_buildings > 0):
 		building += 1
+		idle_buildings -= 1
 	else:
 		pass
 		
 		
 func on_tick():
-	cash += tax_rate*(tax_office+1)
-	manpower += human_recruitment*(recruitment_center+1)
+	GlobalResources.cash += 1
+
 
 
 func _ready():
