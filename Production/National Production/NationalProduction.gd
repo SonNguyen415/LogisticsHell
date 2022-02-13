@@ -1,5 +1,10 @@
 extends Node2D
 
+
+
+
+
+
 var building_count = 0
 
 var idle_buildings = 0
@@ -12,9 +17,8 @@ var weapon_buildings = 0
 var cloth_buildings = 0
 
 
-
-(export) var tax_office = 0
-(export) var recruitment_center = 0
+var tax_office = 0
+var recruitment_center = 0
 
 func construct_building():
 	building_count += 1
@@ -28,7 +32,8 @@ func allocate_building(building):
 		pass
 		
 		
-
+func on_tick():
+	cash += 1
 
 
 func _ready():
