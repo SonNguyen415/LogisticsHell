@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 
+
 # Variables
 var movement_speed = 10
 var movement_reduction = 0
