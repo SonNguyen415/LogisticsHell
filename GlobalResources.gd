@@ -1,8 +1,8 @@
 extends Node
 
-(export) var cash = 10000
-(export) var manpower = 10000
-(export) var connections = 100
+var cash = 10000
+var manpower = 10000
+var connections = 100
 
 const tax_rate = 10
 const human_recruitment = 10
@@ -17,8 +17,7 @@ const weapon_production = 100
 const cloth_production = 100
 
 
-func on_tick():
-	cash += 10
+
 
 
 # Called when the node enters the scene tree for the first time.
