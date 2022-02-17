@@ -46,6 +46,7 @@ func change_global_resources():
 	GlobalResources.cash += GlobalResources.tax_rate * (1 + financial_officer.financial_management / 100)
 	GlobalResources.manpower += GlobalResources.recruitment_rate*(recruitment_center+1) * (1 + financial_officer.recruitment / 100)
 	
+
 	
 
 # Function to be called whenever one produce something new
@@ -56,10 +57,12 @@ func produce(product):
 
 
 
+
+# Generate Stuff
 func on_tick():
 	change_global_resources()
 
 
-
+# Connects the tick generation signal to the on_tick function
 func _ready():
-	pass # Replace with function body.
+	Time.connect("tick_generated", self, "on_tick")
