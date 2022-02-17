@@ -34,6 +34,7 @@ export (int) var drill
 export (int) var tactics
 export (int) var retreat
 
+
 export (int) var cavalry_bonus
 export (int) var infantry_bonus
 export (int) var artillery

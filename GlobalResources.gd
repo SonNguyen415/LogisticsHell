@@ -5,6 +5,7 @@ var cash = 10000
 var manpower = 10000
 var connections = 100
 
+
 # Constant (Base) Production Values
 const TAX_RATE = 10
 const HUMAN_RECRUITMENT = 10

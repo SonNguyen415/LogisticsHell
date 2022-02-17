@@ -6,6 +6,8 @@ var financial_officer = Characters.debug_QA
 # Total number of buildings you have
 var building_count = 0
 
+var stockpile = []
+
 
 # Special buildings, add up to building_count
 var idle_buildings = 0
@@ -30,7 +32,6 @@ func construct_building():
 	
 	
 	
-	
 # Call this function whenever a building is allocated to production
 func allocate_building(building):
 	if(idle_buildings > 0):
@@ -45,6 +46,15 @@ func change_global_resources():
 	GlobalResources.cash += GlobalResources.tax_rate * (1 + financial_officer.financial_management / 100)
 	GlobalResources.manpower += GlobalResources.recruitment_rate*(recruitment_center+1) * (1 + financial_officer.recruitment / 100)
 	
+	
+
+# Function to be called whenever one produce something new
+func produce(product):
+	match product:
+		"medicine":
+			stockpile[0] += GlobalResources.MEDICINE_PRODUCTION*medicine_buildings
+
+
 
 func on_tick():
 	change_global_resources()
