@@ -31,6 +31,7 @@ func construct_building():
 	
 	
 	
+	
 # Call this function whenever a building is allocated to production
 func allocate_building(building):
 	if(idle_buildings > 0):
