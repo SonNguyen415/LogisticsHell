@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 tier = 5
-health = 7
+health = 12
 luck = 20
 diplomacy = 6
 architect = 10
