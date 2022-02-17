@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Characters/CharacterStats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+tier = 5
+health = 7
+luck = 20
+diplomacy = 6
+architect = 10
+financial_management = 8
+food_production = 7
+quartermaster = 8
+hospital_management = 12
+transportation = 15
+innovation = 11
+recruitment = 5
+logistics = 15
+offense = 16
+defense = 14
+siege = 15
+maneuver = 16
+charisma = 5
+drill = 12
+tactics = 14
+retreat = 13
+cavalry_bonus = 8
+infantry_bonus = 11
+artillery = 25
+attribute = ""
