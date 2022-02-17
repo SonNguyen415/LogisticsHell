@@ -1,14 +1,19 @@
 extends KinematicBody2D
 
 
+# Constants
+const BASE_MAINTENANCE = 10
+const BASE_SPEED = 10
+const BASE_REDUCTION = 10
+
 
 # Variables
-var movement_speed = 10
-var movement_reduction = 0
+var movement_speed = BASE_SPEED
+var movement_reduction = BASE_REDUCTION
 var postionX = 0
 var positionY = 0
 
-var maintenance_cost = 10
+var maintenance_cost = BASE_MAINTENANCE
 
 
 var selected = false
