@@ -25,20 +25,6 @@ export (int) var recruitment = 10
 
 # General Stats 
 
-export (int) var logistics
-export (int) var offense
-export (int) var defense
-export (int) var siege
-export (int) var maneuver
-export (int) var charisma
-export (int) var drill
-export (int) var tactics
-export (int) var retreat
-
-
-export (int) var cavalry_bonus
-export (int) var infantry_bonus
-export (int) var artillery
 
 export (int) var logistics = 10
 export (int) var offense = 10

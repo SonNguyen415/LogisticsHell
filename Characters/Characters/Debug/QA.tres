@@ -1,10 +1,14 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://Characters/Character.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Characters/Debug/QAStats.tres" type="Resource" id=2]
+[ext_resource path="res://Characters/SkillTree/QA.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Characters/Constellations/QA.tscn" type="PackedScene" id=4]
 
 [resource]
 script = ExtResource( 1 )
 stats = ExtResource( 2 )
+skill_tree = ExtResource( 3 )
+constellations = ExtResource( 4 )
 name = "QA"
 whatever = ""
