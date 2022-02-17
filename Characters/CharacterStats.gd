@@ -7,7 +7,7 @@ class_name CharacterStats
 # General Stats
 export (int) var tier = 3# 3star, 4star, 5star...
 
-export (int) var health = 10
+export (int) var health = 100
 export (int) var luck = 10
 
 
