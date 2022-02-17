@@ -52,4 +52,4 @@ func on_tick():
 
 
 func _ready():
-	pass # Replace with function body.
+	Time.connect("tick_generated", self, "on_tick")

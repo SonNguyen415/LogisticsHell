@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Characters/CharacterStats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+tier = 0
+health = 0
+luck = 0
+diplomacy = 0
+architect = 0
+financial_management = 0
+food_production = 0
+quartermaster = 0
+hospital_management = 0
+transportation = 0
+innovation = 0
+recruitment = 0
+logistics = 0
+offense = 0
+defense = 0
+siege = 0
+maneuver = 0
+charisma = 0
+drill = 0
+tactics = 0
+retreat = 0
+cavalry_bonus = 0
+infantry_bonus = 0
+artillery = 0
+attribute = ""
