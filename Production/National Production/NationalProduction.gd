@@ -6,7 +6,7 @@ var financial_officer = Characters.debug_QA
 # Total number of buildings you have
 var building_count = 0
 
-var stockpile = []
+
 
 
 # Special buildings, add up to building_count

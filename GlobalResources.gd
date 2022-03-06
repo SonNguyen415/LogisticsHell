@@ -4,6 +4,7 @@ extends Node
 var cash = 10000
 var manpower = 10000
 var connections = 100
+var innovativeness = 50
 
 
 # Constant (Base) Production Values
@@ -18,6 +19,11 @@ const FOOD_PRODUCTION = 1000
 const AMMUNITION_PRODUCTION = 1000
 const WEAPON_PRODUCTION = 100
 const CLOTH_PRODUCTION = 100
+
+
+
+# Stockpile for resources
+var stockpile = []
 
 
 
