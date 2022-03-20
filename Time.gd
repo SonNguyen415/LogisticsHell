@@ -20,7 +20,7 @@ signal tick_generated()
 
 func set_speed(ticks_per_hour):
 	# Sets the game speed (ticks/seconds per hour)
-	self.ticks_in_hour = ticks_per_hour
+	ticks_in_hour = ticks_per_hour
 
 func _process(delta):
 	# Adds an hour to current date every ticks_in_hour seconds

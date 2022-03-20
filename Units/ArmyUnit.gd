@@ -19,8 +19,12 @@ var maintenance_cost = BASE_MAINTENANCE
 var selected = false
 onready var army_value_display = $Control/ArmyCount
 
+
+func _process(delta):
+	pass
+
 func set_size(size):
-	army_value_display.text = size
+	army_value_display = str(size)
 
 func _ready():
 	set_size(str(70)) # Debug Test
@@ -30,3 +34,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_ArmyUnit_mouse_exited():
+	print("hi")
