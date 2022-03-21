@@ -47,14 +47,6 @@ func change_global_resources():
 	GlobalResources.manpower += GlobalResources.recruitment_rate*(recruitment_center+1) * (1 + financial_officer.recruitment / 100)
 	
 
-	
-
-# Function to be called whenever one produce something new
-func produce(product):
-	match product:
-		"medicine":
-			stockpile[0] += GlobalResources.MEDICINE_PRODUCTION*medicine_buildings
-
 
 
 
