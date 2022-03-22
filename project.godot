@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Settlement",
 "language": "GDScript",
 "path": "res://Production/National Production/Settlement.gd"
+}, {
+"base": "Node",
+"class": "SettlementResources",
+"language": "GDScript",
+"path": "res://Production/National Production/SettlementResources.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
 "CharacterStats": "",
-"Settlement": ""
+"Settlement": "",
+"SettlementResources": ""
 }
 
 [application]
