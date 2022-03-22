@@ -36,7 +36,6 @@ func change_global_resources():
 	GlobalResources.cash += GlobalResources.tax_rate * (1 + financial_officer.financial_management / 100)
 	GlobalResources.manpower += GlobalResources.recruitment_rate*(recruitment_center+1) * (1 + financial_officer.recruitment / 100)
 
-
 # Generate Stuff
 func on_tick():
 	change_global_resources()

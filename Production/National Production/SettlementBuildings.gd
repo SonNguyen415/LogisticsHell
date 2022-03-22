@@ -9,14 +9,10 @@ var warehouses
 var max_capacity = warehouses*WAREHOUSE_SPACE
 var available_capacity = max_capacity
 
+# Maybe we can just make factories a class or something
 var idle_factories = 0
-var medical_convoy_factories = 0
-var medicine_factories = 0
-var hygiene_factories = 0
-var food_factories = 0
-var ammunition_factories = 0
-var weapon_factories = 0
-var cloth_factories = 0
+var producing_factories = {"medical_convoy": 0, "medicine": 0, "hygiene": 0,
+							"food": 0, "ammo": 0, "weapon": 0, "cloth": 0, "fish": 0}
 
 # Settlement specific buildings
 
