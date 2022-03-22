@@ -1,21 +1,21 @@
 extends Node
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
 class_name SettlementResources
 
+var food
+var wood
+var copper
+var cloth
+var iron
+var steel
+var glasses
+var gunpowder
+var preservatives
+var smokeless_powder
+var horses
+var coal
+var oil
+var electricity
+var uranium
 
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
