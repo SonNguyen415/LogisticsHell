@@ -16,21 +16,9 @@ var producing_factories = {"medical_convoy": 0, "medicine": 0, "hygiene": 0,
 
 # Settlement specific buildings
 
-# Civ
-var markets
-var temples
-var farms = 0
-var metal_mine = 0
-var train_stations
-
-# Def
-var defenses
-var watchtowers
-
-# Milta
-var hospitals
-var barracks
-var training_fields
+var civilian_buildings = {"market": 0, "temple": 0, "farm": 0, "mine": 0, "train station": 0}
+var defense = {"defenses": 0, "watchtowers": 0}
+var military_buildings = {"hospitals": 0, "barracks": 0, "training field": 0, "mustering ground": 0, "artillery field": 0}
 
 func build_warehouse():
 	# Builds a Warehouse (Supply Depot)
