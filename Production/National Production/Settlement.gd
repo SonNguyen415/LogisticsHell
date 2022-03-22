@@ -1,5 +1,5 @@
 extends Node
-
+class_name Settlement
 
 # Declare member variables here. Examples:
 # var a = 2
