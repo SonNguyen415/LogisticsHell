@@ -25,3 +25,14 @@ func build_warehouse():
 	if GlobalResources.cash >= WAREHOUSE_COST:
 		GlobalResources.cash -= WAREHOUSE_COST
 		warehouses += 1
+
+# Self Explanatory Functions
+# Builds 1 of something of a type
+func build_civilian_building(type):
+	civilian_buildings[type] += 1
+
+func build_defense(type):
+	defense[type] += 1
+
+func build_military_building(type):
+	military_buildings[type] += 1
