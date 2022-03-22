@@ -25,7 +25,12 @@ _global_script_classes=[ {
 "path": "res://Production/National Production/Settlement.gd"
 }, {
 "base": "Node",
-"class": "SettlementResource",
+"class": "SettlementBuildings",
+"language": "GDScript",
+"path": "res://Production/National Production/SettlementBuildings.gd"
+}, {
+"base": "Node",
+"class": "SettlementResources",
 "language": "GDScript",
 "path": "res://Production/National Production/SettlementResources.gd"
 } ]
@@ -33,7 +38,8 @@ _global_script_class_icons={
 "Character": "",
 "CharacterStats": "",
 "Settlement": "",
-"SettlementResource": ""
+"SettlementBuildings": "",
+"SettlementResources": ""
 }
 
 [application]
@@ -45,7 +51,7 @@ config/icon="res://icon.png"
 
 Time="*res://Time.gd"
 GlobalResources="*res://GlobalResources.gd"
-Characters="*res://Characters.gd"
+Characters="*res://CharacterList.gd"
 
 [physics]
 
