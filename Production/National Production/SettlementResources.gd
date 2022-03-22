@@ -7,10 +7,11 @@ var storage_dictionary = {"food" : 0, "wood" : 0, "copper" : 0, "cloth" : 0, "ir
 var resource_count = 15 # Total number of unique resources
 # We can add more later I guess
 
-func add_resource(resource, count):
+func add_resource(resource, count, maximum):
 	# Resource: String name of resource to add
 	# Count: Amount to add
-	storage_dictionary[resource] += count
+	# Maximum: maximum capacity
+	storage_dictionary[resource] = clamp(storage_dictionary[resource]  + count, 0, maximum)
 
 func subtract_resource(resource, count):
 	# Resource: String name of resource to add
