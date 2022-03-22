@@ -6,8 +6,9 @@ export (Script) var resource_script
 var resource 
 
 func _ready():
-	if not resource_script == null:
+	if resource_script is SettlementResource:
 		resource = resource_script.instance()
 
 func load_resource_script(script):
-	resource = script.instance()
+	if script is SettlementResource:
+		resource = script.instance()

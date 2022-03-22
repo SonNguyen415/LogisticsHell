@@ -1,5 +1,5 @@
 extends Node
-class_name SettlementResources
+class_name SettlementResource
 
 var food
 var wood
