@@ -30,7 +30,7 @@ _global_script_classes=[ {
 "path": "res://Production/National Production/SettlementBuildings.gd"
 }, {
 "base": "Node",
-"class": "SettlementResources",
+"class": "SettlementResource",
 "language": "GDScript",
 "path": "res://Production/National Production/SettlementResources.gd"
 } ]
@@ -39,7 +39,7 @@ _global_script_class_icons={
 "CharacterStats": "",
 "Settlement": "",
 "SettlementBuildings": "",
-"SettlementResources": ""
+"SettlementResource": ""
 }
 
 [application]

@@ -9,6 +9,8 @@ const WAREHOUSE_COST = 10
 
 
 var warehouses
+var max_capacity = warehouses*WAREHOUSE_SPACE
+var available_capacity = max_capacity
 
 
 func build_warehouse():
