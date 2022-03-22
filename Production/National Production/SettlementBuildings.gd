@@ -13,8 +13,11 @@ var max_capacity = warehouses*WAREHOUSE_SPACE
 var available_capacity = max_capacity
 
 
+
+
 func build_warehouse():
 	GlobalResources.cash -= WAREHOUSE_COST
+	warehouses += 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
