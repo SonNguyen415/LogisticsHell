@@ -12,8 +12,14 @@ var warehouses
 var max_capacity = warehouses*WAREHOUSE_SPACE
 var available_capacity = max_capacity
 
-
-
+var markets
+var temples
+var hospitals
+var defenses
+var watchtowers
+var barracks
+var training_fields
+var train_stations
 
 func build_warehouse():
 	GlobalResources.cash -= WAREHOUSE_COST
