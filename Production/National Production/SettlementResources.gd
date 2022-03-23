@@ -5,6 +5,7 @@ var storage_dictionary = {"food" : 0, "wood" : 0, "copper" : 0, "cloth" : 0, "ir
 						 "steel" : 0, "glasses": 0, "gunpowder" : 0, "preservatives" : 0, "smokeless_powder" : 0,
 						"horses" : 0, "coal" : 0, "oil" : 0, "electricity" : 0, "uranium" : 0}
 
+
 func add_resource(resource, count, maximum):
 	# Resource: String name of resource to add
 	# Count: Amount to add
