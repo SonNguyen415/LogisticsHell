@@ -36,3 +36,12 @@ func build_defense(type):
 
 func build_military_building(type):
 	military_buildings[type] += 1
+
+func get_building_count(type, building_name):
+	# Type: "civilian", "defense", "military"
+	if type == "civilian":
+		return civilian_buildings[building_name]
+	elif type == "defense":
+		return defense[building_name]
+	elif type == "military":
+		return military_buildings[building_name]
