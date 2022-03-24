@@ -49,9 +49,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Time="*res://Autoloads/Time.gd"
-GlobalResources="*res://Autoloads/GlobalResources.gd"
-Characters="*res://Autoloads/CharacterList.gd"
+Time="*res://Time.gd"
+GlobalResources="*res://GlobalResources.gd"
+Characters="*res://Characters.gd"
 
 [physics]
 
