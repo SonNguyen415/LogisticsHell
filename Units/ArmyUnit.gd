@@ -46,6 +46,3 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
-func _on_ArmyUnit_mouse_exited():
-	print("hi")
