@@ -17,7 +17,8 @@ func _input(event):
 		elif get_rect().has_point(to_local(event.position)) and clicked == true:
 			clicked = false
 			print("deselected")
-		elif clicked == true:
+	elif event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_RIGHT:
+		if clicked == true:
 			global_position = get_global_mouse_position()
 			clicked = false
 			print("move")
