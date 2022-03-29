@@ -20,6 +20,8 @@ func _process(delta):
 		var sine = (destinationY-global_position.y)/distance
 		global_position.x += cosine*movementSpeed
 		global_position.y += sine*movementSpeed
+	elif clicked == false:
+		modulate = Color.white
 		
 #Player input, if you click on the army, it selects it, click on it again, deselects, right click somewhere, activates movement
 
@@ -35,8 +37,6 @@ func _input(event):
 		if clicked == true:
 			destinationX = get_global_mouse_position().x
 			destinationY = get_global_mouse_position().y
-			clicked = false
-			modulate = Color.white
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
