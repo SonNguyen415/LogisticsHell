@@ -2,7 +2,7 @@
 """
 ---------------------------------------------------------------------------------------------------
 
-[Insert file description]
+This file keeps some constants and values for global resources
 
 Authors: Son Nguyen
 
