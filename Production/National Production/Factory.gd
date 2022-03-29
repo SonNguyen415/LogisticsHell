@@ -11,16 +11,15 @@ Authors: Son Nguyen, Max Kim
 
 
 extends Node
-
+class_name Factory
 
 var type 
+var production_rate
 
+func set_type(toast):
+	# Sets the production type of the factory to the input variable
+	type = toast
 
-# Called when the node enters the scene tree for the first time.
-func _ready():	
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func set_rate(rate):
+	# Self Explanatory
+	production_rate = rate
