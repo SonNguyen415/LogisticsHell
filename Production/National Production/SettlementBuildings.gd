@@ -18,6 +18,8 @@ class_name SettlementBuildings
 const WAREHOUSE_SPACE = 1000
 const WAREHOUSE_COST = 10
 
+const FACTORY_COST = 15
+
 
 # Storage buildings
 var warehouses
@@ -26,6 +28,7 @@ var available_capacity = max_capacity
 
 
 # Maybe we can just make factories a class or something
+
 var idle_factories = 0
 var producing_factories = {"medical_convoy": 0, "medicine": 0, "hygiene": 0,
 							"food": 0, "ammo": 0, "weapon": 0, "cloth": 0, "fish": 0}
@@ -40,8 +43,11 @@ var military_buildings = {"hospitals": 0, "barracks": 0, "training field": 0, "m
 
 
 
+# Function to build a factory, adding to the number of idle factories
 func build_factory():
-	idle_factories += 1
+	if GlobalResources.cash >= FACTORY_COST:
+		GlobalResources.cash -= FACTORY_COST
+		idle_factories += 1
 
 
 # Function to build a warehouse
