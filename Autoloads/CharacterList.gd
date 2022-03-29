@@ -1,7 +1,8 @@
 """
 ---------------------------------------------------------------------------------------------------
 
-[Insert file description]
+A global file that stores character resource paths
+Useful for instantiating characters into the game since it preloads all of them
 
 Authors: Max Kim
 

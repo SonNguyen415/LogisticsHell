@@ -1,7 +1,9 @@
 """
 ---------------------------------------------------------------------------------------------------
 
-[Insert file description]
+The time system of the game
+Stores the rate at which an hour goes, how many hours per day, month, year... 
+Also configurable
 
 Authors: Max Kim
 

@@ -1,7 +1,8 @@
 """
 ---------------------------------------------------------------------------------------------------
 
-[Insert file description]
+Settlement Code
+Stores a script that represents the settlement's resources and building information
 
 Authors: Son Nguyen, Max Kim
 

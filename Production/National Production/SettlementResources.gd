@@ -1,7 +1,8 @@
 """
 ---------------------------------------------------------------------------------------------------
 
-[Insert file description]
+Settlement Resource Code
+Stores information about settlement resource count and can be added/subtracted
 
 Authors: Son Nguyen, Max Kim
 

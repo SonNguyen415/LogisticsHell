@@ -1,7 +1,8 @@
 """
 ---------------------------------------------------------------------------------------------------
 
-[Insert file description]
+Settlement Building Code
+Stores information about the buildings of a settlement and their corresponding production rates
 
 Authors: Son Nguyen, Max Kim
 
