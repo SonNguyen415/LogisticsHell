@@ -29,7 +29,8 @@ var available_capacity = max_capacity
 var idle_factories = 0
 var producing_factories = {"medical_convoy": 0, "medicine": 0, "hygiene": 0,
 							"food": 0, "ammo": 0, "weapon": 0, "cloth": 0, "fish": 0}
-var factory_information = Factory.instance()
+var factory_rate = {"medical_convoy": 0, "medicine": 0, "hygiene": 0,
+					"food": 0, "ammo": 0, "weapon": 0, "cloth": 0, "fish": 0}
 
 
 # Settlement specific buildings
