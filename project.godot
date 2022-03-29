@@ -20,11 +20,6 @@ _global_script_classes=[ {
 "path": "res://Characters/CharacterStats.gd"
 }, {
 "base": "Node",
-"class": "Factory",
-"language": "GDScript",
-"path": "res://Production/National Production/Factory.gd"
-}, {
-"base": "Node",
 "class": "Settlement",
 "language": "GDScript",
 "path": "res://Production/National Production/Settlement.gd"
@@ -42,7 +37,6 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Character": "",
 "CharacterStats": "",
-"Factory": "",
 "Settlement": "",
 "SettlementBuildings": "",
 "SettlementResource": ""
