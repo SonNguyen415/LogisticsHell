@@ -39,7 +39,8 @@ var military_buildings = {"hospitals": 0, "barracks": 0, "training field": 0, "m
 
 
 
-
+func build_factory():
+	idle_factories += 1
 
 
 # Function to build a warehouse

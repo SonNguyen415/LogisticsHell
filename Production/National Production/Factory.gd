@@ -23,3 +23,5 @@ func set_type(toast):
 func set_rate(rate):
 	# Self Explanatory
 	production_rate = rate
+
+
