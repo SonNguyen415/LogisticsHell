@@ -32,8 +32,18 @@ const WEAPON_PRODUCTION = 100
 const CLOTH_PRODUCTION = 100
 
 
+# Building values
+const WAREHOUSE_SPACE = 1000
+const WAREHOUSE_COST = 10
+
+const FACTORY_COST = 15
+const BUILDING_COST = 15
+
+
 
 # Initialize our income as equal to the constants
 var tax_rate = TAX_RATE
 var recruitment_rate = HUMAN_RECRUITMENT
+
+
 

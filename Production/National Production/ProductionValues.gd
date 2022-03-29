@@ -1,6 +1,6 @@
 """
 ---------------------------------------------------------------------------------------------------
-This file contains information and constants for natuoinal production and settlement production
+This file contains information
 
 Authors:
 ---------------------------------------------------------------------------------------------------	
