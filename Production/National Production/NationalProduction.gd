@@ -1,3 +1,17 @@
+"""
+---------------------------------------------------------------------------------------------------
+
+This file contains functions that can be used for national production. 
+
+Nationa production: menu that represents production from home country and not from settlements
+
+Authors: Son Nguyen, Max Kim
+
+---------------------------------------------------------------------------------------------------
+"""
+
+
+
 extends Node2D
 
 var financial_officer = Characters.debug_QA
@@ -26,15 +40,19 @@ func allocate_factory(factory_type):
 		producing_factories[factory_type] += 1
 		idle_factories -= 1
 
+
+
 func deallocate_factory(factory_type):
 	if(producing_factories[factory_type] > 0):
 		producing_factories[factory_type] -= 1
 		idle_factories += 1
 
+
 # Every tick, we increase resources, this is represented as income
 func change_global_resources():
 	GlobalResources.cash += GlobalResources.tax_rate * (1 + financial_officer.financial_management / 100)
 	GlobalResources.manpower += GlobalResources.recruitment_rate*(recruitment_center+1) * (1 + financial_officer.recruitment / 100)
+
 
 # Generate Stuff
 func on_tick():
