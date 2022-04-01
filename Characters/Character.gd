@@ -1,3 +1,14 @@
+"""
+---------------------------------------------------------------------------------------------------
+
+A character base class
+Stores information about the character, from stats to their skill tree
+
+Authors: Max Kim
+
+---------------------------------------------------------------------------------------------------
+"""
+
 extends Resource
 class_name Character
 

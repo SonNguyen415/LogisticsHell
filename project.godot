@@ -18,10 +18,28 @@ _global_script_classes=[ {
 "class": "CharacterStats",
 "language": "GDScript",
 "path": "res://Characters/CharacterStats.gd"
+}, {
+"base": "Node",
+"class": "Settlement",
+"language": "GDScript",
+"path": "res://Production/National Production/Settlement.gd"
+}, {
+"base": "Node",
+"class": "SettlementBuildings",
+"language": "GDScript",
+"path": "res://Production/National Production/SettlementBuildings.gd"
+}, {
+"base": "Node",
+"class": "SettlementResource",
+"language": "GDScript",
+"path": "res://Production/National Production/SettlementResources.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
-"CharacterStats": ""
+"CharacterStats": "",
+"Settlement": "",
+"SettlementBuildings": "",
+"SettlementResource": ""
 }
 
 [application]
