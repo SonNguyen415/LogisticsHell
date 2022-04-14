@@ -13,11 +13,11 @@ Authors: Max Kim, Oliver Krisetya
 extends Resource
 class_name CharacterStats
 
-# Last Updated 4/13/22
+# Last Updated 4/14/22
 
 
 # Teir Stats
-export (int) var tier = 3# 3star, 4star, 5star...
+export (int) var tier = 3 # 3star, 4star, 5star...
 
 export (int) var health = 100
 export (int) var luck = 10
@@ -54,6 +54,8 @@ export (int) var artillery = 10
 export (String) var attribute
 
 
+var rng = RandomNumberGenerator.new()
+
 #Functions
 
 
@@ -62,18 +64,50 @@ export (String) var attribute
 
 func generate_gen_stats(high_stats, low_stats, tier):
 	# Base zero stats
-	var stats_dict = {"Logistics": 0,
-					 "Offense": 0,
-					 "Defense": 0,
-					 "Siege": 0,
-					 "Maneuver": 0,
-					 "Charisma": 0,
-					 "Drill": 0,
-					 "Tactics": 0,
-					 "Retreat": 0} 
-	var max_stats = preload("res://Characters/Characters/Debug/MaxStats.tres")
-	print(max_stats.new())
+	var stats_dict = {"logistics": 0,
+					 "offense": 0,
+					 "defense": 0,
+					 "siege": 0,
+					 "maneuver": 0,
+					 "charisma": 0,
+					 "drill": 0,
+					 "tactics": 0,
+					 "retreat": 0} 
+
+	# Get max natural generated stats for
+	# 5-star general to be used to calculate
+	# tier ranges
 	
+	"""
+	TO DO: READ RESOURCE FILE 
+	"""
+	var max_natstats_dict = {"max_logistics": 100,
+							"max_offense": 100,
+							"max_defense": 100,
+							"max_maneuver": 100,
+							"max_charisma": 100,
+							"max_drill": 100,
+							"max_tactics": 100,
+							"max_retreat": 100}
+	
+	for maxstat in max_natstats_dict:
+		for stat in stats_dict:
+			if stat in maxstat:
+				# Calculate divisons 
+				var maximum = maxstat * ((tier%3+1)/3)
+				var minimum = maxstat * ((tier%3)/3)
+				
+				if stat in high_stats:
+					var value = rng.randi_range(2*(maximum/3),maximum)
+					stat.add(value)
+				elif stat in low_stats:
+					var value = rng.randi_range(1,maximum/3)
+					stat.add(value)
+				else:
+					var value = rng.randi_range((maximum/3),2*(maximum/3))
+					stat.add(value)
+						
+		
 	return stats_dict
 
 func generate_adm_stats(high_stats, low_stats):
