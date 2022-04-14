@@ -84,6 +84,7 @@ func generate_gen_stats(high_stats, low_stats, tier):
 	var max_natstats_dict = {"max_logistics": 100,
 							"max_offense": 100,
 							"max_defense": 100,
+							"max_siege": 100,
 							"max_maneuver": 100,
 							"max_charisma": 100,
 							"max_drill": 100,
@@ -111,4 +112,50 @@ func generate_gen_stats(high_stats, low_stats, tier):
 	return stats_dict
 
 func generate_adm_stats(high_stats, low_stats):
-	return 1
+	# Base zero stats
+	var stats_dict = {"diplomacy": 0,
+					 "architect": 0,
+					 "financial_management": 0,
+					 "food_production": 0,
+					 "quartermaster": 0,
+					 "hospital_management": 0,
+					 "transportation": 0,
+					 "innovation": 0,
+					 "recruitment": 0} 
+
+	# Get max natural generated stats for
+	# 5-star general to be used to calculate
+	# tier ranges
+	
+	"""
+	TO DO: READ RESOURCE FILE 
+	"""
+	var max_natstats_dict = {"max_diplomacy": 100,
+							"max_architect": 100,
+							"max_financial_management": 100,
+							"max_food_production": 100,
+							"max_quartermaster": 100,
+							"max_hospital_management": 100,
+							"max_transportation": 100,
+							"max_innovation": 100,
+							"max_recruitment": 100}
+	
+	for maxstat in max_natstats_dict:
+		for stat in stats_dict:
+			if stat in maxstat:
+				# Calculate divisons 
+				var maximum = maxstat * ((tier%3+1)/3)
+				var minimum = maxstat * ((tier%3)/3)
+				
+				if stat in high_stats:
+					var value = rng.randi_range(2*(maximum/3),maximum)
+					stat.add(value)
+				elif stat in low_stats:
+					var value = rng.randi_range(1,maximum/3)
+					stat.add(value)
+				else:
+					var value = rng.randi_range((maximum/3),2*(maximum/3))
+					stat.add(value)
+						
+		
+	return stats_dict
