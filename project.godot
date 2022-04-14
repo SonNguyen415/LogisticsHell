@@ -45,6 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="LogisticHell"
+run/main_scene="res://Characters/SkillTree/QA.tscn"
 config/icon="res://icon.png"
 
 [autoload]
