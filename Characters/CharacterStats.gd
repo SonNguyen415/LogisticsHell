@@ -54,10 +54,17 @@ export (int) var artillery = 10
 export (String) var attribute
 
 
+
+
+
+
+
+# Randomizer
 var rng = RandomNumberGenerator.new()
 
-#Functions
+var MAXSTATS = preload("res://Characters/Characters/Debug/MaxStats.tres")
 
+#Functions
 
 # Randomizes and generates general stats given
 # specific high and low stats of the general
@@ -78,18 +85,15 @@ func generate_gen_stats(high_stats, low_stats, tier):
 	# 5-star general to be used to calculate
 	# tier ranges
 	
-	"""
-	TO DO: READ RESOURCE FILE 
-	"""
-	var max_natstats_dict = {"max_logistics": 100,
-							"max_offense": 100,
-							"max_defense": 100,
-							"max_siege": 100,
-							"max_maneuver": 100,
-							"max_charisma": 100,
-							"max_drill": 100,
-							"max_tactics": 100,
-							"max_retreat": 100}
+	var max_natstats_dict = {"max_logistics": MAXSTATS.logistics,
+							"max_offense": MAXSTATS.offense,
+							"max_defense": MAXSTATS.defense,
+							"max_siege": MAXSTATS.siege,
+							"max_maneuver": MAXSTATS.maneuver,
+							"max_charisma": MAXSTATS.charisma,
+							"max_drill": MAXSTATS.drill,
+							"max_tactics": MAXSTATS.tactics,
+							"max_retreat": MAXSTATS.retreat}
 	
 	for maxstat in max_natstats_dict:
 		for stat in stats_dict:
@@ -130,15 +134,15 @@ func generate_adm_stats(high_stats, low_stats):
 	"""
 	TO DO: READ RESOURCE FILE 
 	"""
-	var max_natstats_dict = {"max_diplomacy": 100,
-							"max_architect": 100,
-							"max_financial_management": 100,
-							"max_food_production": 100,
-							"max_quartermaster": 100,
-							"max_hospital_management": 100,
-							"max_transportation": 100,
-							"max_innovation": 100,
-							"max_recruitment": 100}
+	var max_natstats_dict = {"max_diplomacy": MAXSTATS.diplomacy,
+							"max_architect": MAXSTATS.architect,
+							"max_financial_management": MAXSTATS.financial_management,
+							"max_food_production": MAXSTATS.food_production,
+							"max_quartermaster": MAXSTATS.quartermaster,
+							"max_hospital_management": MAXSTATS.hospital_management,
+							"max_transportation": MAXSTATS.transportation,
+							"max_innovation": MAXSTATS.innovation,
+							"max_recruitment": MAXSTATS.recruitment}
 	
 	for maxstat in max_natstats_dict:
 		for stat in stats_dict:
