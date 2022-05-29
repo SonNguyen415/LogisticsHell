@@ -2,15 +2,12 @@
 ---------------------------------------------------------------------------------------------------
 
 This file contains functions that can be used for national production. 
-
-Nationa production: menu that represents production from home country and not from settlements
+National Production: menu that represents production from home country and not from settlements
 
 Authors: Son Nguyen, Max Kim
 
 ---------------------------------------------------------------------------------------------------
 """
-
-
 
 extends Node2D
 

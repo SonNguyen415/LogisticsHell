@@ -9,20 +9,18 @@ Authors: Son Nguyen, Max Kim
 ---------------------------------------------------------------------------------------------------
 """
 
-
-
-extends Node
+extends Node2D
 class_name SettlementResource
 
-
+export (Script) var resources = preload("res://Economics/Resources/ResourceList.gd")
 
 var tax_base = 10
+var storage_dictionary = {}
 
-
-var storage_dictionary = {"food" : 0, "wood" : 0, "copper" : 0, "cloth" : 0, "iron" : 0,
-						 "steel" : 0, "glasses": 0, "gunpowder" : 0, "preservatives" : 0, "smokeless_powder" : 0,
-						"horses" : 0, "coal" : 0, "oil" : 0, "electricity" : 0, "uranium" : 0}
-
+func _ready():
+	var material_list = resources.material_list
+	for producable_material in material_list: # Material is a reserved keyword sadly
+		storage_dictionary[producable_material] = 0
 
 func add_resource(resource, count, maximum):
 	# Resource: String name of resource to add
