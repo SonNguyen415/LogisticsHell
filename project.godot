@@ -51,9 +51,9 @@ config/icon="res://icon.png"
 [autoload]
 
 Time="*res://Time.gd"
-ResourceList="*res://Economics/Resources/ResourceList.tscn"
 GlobalResources="*res://GlobalResources.gd"
 Characters="*res://Characters.gd"
+ResourceList="*res://Economics/Resources/ResourceList.tscn"
 
 [physics]
 
