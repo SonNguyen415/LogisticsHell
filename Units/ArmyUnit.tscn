@@ -10,8 +10,8 @@
 script = ExtResource( 1 )
 
 [node name="ArmySprite" type="Sprite" parent="."]
-position = Vector2( 348.25, 277.25 )
-scale = Vector2( 3.75781, 3.47656 )
+position = Vector2( 276.5, 337.75 )
+scale = Vector2( 1.51562, 1.58594 )
 texture = ExtResource( 2 )
 script = ExtResource( 3 )
 

@@ -18,5 +18,5 @@ var material_list
 
 func _ready():
 	# Instantiates the global resource 
-	material_list = RawMaterials.material_list + ManufacturedMaterials.material_list
-		
+	#material_list = RawMaterials.material_list + ManufacturedMaterials.material_list
+	pass

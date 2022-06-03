@@ -37,11 +37,22 @@ var retaliation = 5
 var fortitude = 10
 var lethality = 0.3
 
+var incoming_retaliation = 0;
+var incoming_assault = 0;
+var total_losses = 0;
+
+var assault_dmg = troop_strength*assault*morale
+var retaliation_dmg = troop_strength*retaliation*morale
+
+var incoming_shock = 0
+
 func _ready():
 	pass
 
 func losses():
-	pass
+	total_losses = (incoming_assault + incoming_retaliation) - fortitude/5
+	assault_dmg = troop_strength*assault*morale
+	retaliation_dmg = troop_strength*retaliation*morale
 
 func check_morale():
 	if (morale < 0):

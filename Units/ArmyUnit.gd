@@ -26,6 +26,7 @@ var positionY = 0
 
 var maintenance_cost = BASE_MAINTENANCE
 
+var team = 0
 
 var selected = false
 onready var army_value_display = $Control/ArmyCount
