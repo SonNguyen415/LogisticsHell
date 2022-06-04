@@ -21,8 +21,6 @@ const BASE_REDUCTION = 10
 # Variables
 var movement_speed = BASE_SPEED
 var movement_reduction = BASE_REDUCTION
-var postionX = 0
-var positionY = 0
 
 var maintenance_cost = BASE_MAINTENANCE
 
