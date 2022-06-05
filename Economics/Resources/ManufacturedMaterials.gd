@@ -8,3 +8,5 @@ var material_names = ["Bows", "Arrows", "Musket", "Matchlock", "Arquebus",
 					"Helmets", "Uniforms", "Boots", "Hygiene", "Toilet Paper", "Bandaids",
 					"Penicillin", "Gauze", "Face Masks", "MRE", "Alcohol", "Mobile Kitchen", 
 					"Canned Food", "Stone", "Bricks", "Wagons", "Boats", "Automobiles"]
+
+

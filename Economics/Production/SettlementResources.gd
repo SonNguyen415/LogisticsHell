@@ -12,13 +12,14 @@ Authors: Son Nguyen, Max Kim
 extends Node2D
 class_name SettlementResource
 
-export (Script) var resources = preload("res://Economics/Resources/ResourceList.gd")
+export (Script) var manufactured_resources = preload("res://Economics/Resources/ManufacturedMaterials.gd")
+export (Script) var raw_resources = preload("res://Economics/Resources/RawMaterials.gd")
 
 var tax_base = 10
 var storage_dictionary = {}
 
 func _ready():
-	var material_list = resources.material_list
+	var material_list = raw_resources.material_list + manufactured_resources.material_list
 	for producable_material in material_list: # Material is a reserved keyword sadly
 		storage_dictionary[producable_material] = 0
 
