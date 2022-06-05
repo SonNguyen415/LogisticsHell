@@ -3,18 +3,23 @@ extends Sprite
 
 # Declare member variables here. Examples:
 var clicked = false;
-var destinationX = position.x
-var destinationY = position.y
 var movementSpeed = 10
-
-var team = -1
 var selectable = false
+
+class_name Army
+var destinationX: int
+var destinationY: int
+var team: String
+
+func _init(team_param = "Player", positionX = global_position.x, positionY = global_position.y):
+	team = team_param
+	destinationX = positionX
+	destinationY = positionY
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	destinationX = global_position.x
-	destinationY = global_position.y
-	if (team == 0):
+	if (team == "Player"):
 		selectable = true
 
 #Army movement, if the distance is more than 2 times the movement speed, move

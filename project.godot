@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Sprite",
+"class": "Army",
+"language": "GDScript",
+"path": "res://Units/ArmyUnitSprite.gd"
+}, {
 "base": "Node2D",
 "class": "BattalionUnit",
 "language": "GDScript",
@@ -40,6 +45,7 @@ _global_script_classes=[ {
 "path": "res://Economics/Production/SettlementResources.gd"
 } ]
 _global_script_class_icons={
+"Army": "",
 "BattalionUnit": "",
 "Character": "",
 "CharacterStats": "",

@@ -11,7 +11,6 @@ Authors: Warren Nguyen
 
 extends KinematicBody2D
 
-
 # Constants
 const BASE_MAINTENANCE = 10
 const BASE_SPEED = 10
@@ -24,9 +23,6 @@ var movement_reduction = BASE_REDUCTION
 
 var maintenance_cost = BASE_MAINTENANCE
 
-var team = 0
-
-var selected = false
 onready var army_value_display = $Control/ArmyCount
 
 
