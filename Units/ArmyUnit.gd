@@ -13,11 +13,27 @@ extends KinematicBody2D
 
 var clicked = false
 var hovering = false
-var movementSpeed = 10
+var movement_speed = 10
 var selectable = false
 var destinationX 
 var destinationY 
 var team
+
+var army_width = 5
+var army_depth = 5
+
+var battalion_matrix = create_2d_array(army_width, army_depth, BattalionUnit)
+
+func create_2d_array(width, depth, value):
+	var a = []
+	
+	for y in range(depth):
+		a.append([])
+		a[y].resize(width)
+		for x in range(width):
+			a[y][x] = value
+	return a
+
 
 func _init(team_allocation = "Player"):
 	team = team_allocation
@@ -33,11 +49,11 @@ func _ready():
 
 func _process(delta):
 	var distance = global_position.distance_to(Vector2(destinationX, destinationY));
-	if (distance > movementSpeed*2):
+	if (distance > movement_speed*2):
 		var cosine = (destinationX-global_position.x)/distance
 		var sine = (destinationY-global_position.y)/distance
-		global_position.x += cosine*movementSpeed
-		global_position.y += sine*movementSpeed
+		global_position.x += cosine*movement_speed
+		global_position.y += sine*movement_speed
 	elif clicked == false:
 		modulate = Color.white
 
@@ -63,3 +79,8 @@ func _on_Area2D_mouse_entered():
 
 func _on_Area2D_mouse_exited():
 	hovering = false
+
+
+func _on_Area2D_body_entered(body):
+	if body.team != team:
+		print("HUZZAH")
