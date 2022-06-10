@@ -12,17 +12,26 @@ Authors: Max Kim
 extends Resource
 class_name Character
 
-export (String) var name
-export (String) var whatever
-export (int) var experience
-export (int) var level
+var name
+var experience
+var level
 var currentLevelCap
-var tier
+var tier 
 var levelPoints
-
-
+var tierRating
 
 var rng = RandomNumberGenerator.new()
+
+
+func getExperience():
+	return experience
+
+func getLevel():
+	return level
+
+func getName():
+	return name
+
 
 #functions
 
@@ -42,7 +51,7 @@ func setTier(num):
 func addXP(xp):
 	experience = experience + xp
 
-func levelUp():
+func checkLevelUp():
 	if(experience >= currentLevelCap):
 		level = level + 1
 		var temp = currentLevelCap - experience
@@ -50,10 +59,14 @@ func levelUp():
 		levelUpPoints()
 
 
+
+
 #constructor
 
 func _init():
-	level = 1
 	
-	var tierRating = rng.randf_range(1,200)
+	level = 1 
+	
+	
+	tierRating = rng.randf_range(1,200)
 	tier = setTier(tierRating)
