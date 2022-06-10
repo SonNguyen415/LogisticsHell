@@ -19,10 +19,11 @@ var destinationX
 var destinationY 
 var team
 
-var army_width = 5
-var army_depth = 5
+var battalion = preload("res://Units/BattalionUnit.tscn")
+var army_width = 1
+var army_depth = 1
 
-var battalion_matrix = create_2d_array(army_width, army_depth, BattalionUnit)
+var battalion_matrix = create_2d_array(army_width, army_depth, battalion.instance())
 
 func create_2d_array(width, depth, value):
 	var a = []
