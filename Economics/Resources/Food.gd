@@ -1,43 +1,43 @@
-extends Node
+extends Resources
 
 """
 Food Code
 - Max
 """
 
-var produced_food = []
-var total_food = 0
+var produce_array # Stores count of food and their expire date
+# We simply use up whatever expires soonest for now
 var expire_rate = 0 # Months until food expires
 
-func produce_food(count):
-	# Produce count amount of food, and stores value in array
-	# count: [nteger, expiration month count]
-	produced_food.append([count, expire_rate])
-	total_food += count
+func set_value(val):
+	.set_value(val) # Parent Call
+	produce_array = [[val, expire_rate]]
 
-func get_to_expire_food():
+func add_value(val):
+	.add_value(val)
+	produce_array.append([val, expire_rate])
+
+func subtract_value(val):
+	pass #I'll implement this in a bit
+
+func get_expire_food():
 	# Gets the amount of food that will expire next month
 	var count = 0
-	for i in len(produced_food):
-		if produced_food[i][1] <= 1:
-			count += produced_food[i][0]
-	
+	for i in len(produce_array):
+		if produce_array[i][1] <= 1:
+			count += produce_array[i][0]
 	return count
 		
-func expire_round():
+func produce():
 	# Reduces the time to expire for each food in produced_food by 1
 	# Then removes those that hit 0
+	# Then produces 1 month worth of food again
 	var remove_indices = []
-	for i in len(produced_food):
-		produced_food[i][1] -= 1
-		if produced_food[i][1] <= 0:
+	for i in len(produce_array):
+		produce_array[i][1] -= 1
+		if produce_array[i][1] <= 0:
 			remove_indices.push_back(i)
-	
 	for index in remove_indices:
-		produced_food.remove(index) # We remove from the back so no index black magic fuckery
-			
-
-func time_cycle():
-	#TODO: One month passes, then call this
-	produce_food(0) # Later when determining code for monthly food production, we put that here
-	expire_round()
+		add_value(-produce_array[index][0]) # Food remaining to be reduced
+		produce_array.remove(index) # We remove from the back so no index black magic fuckery
+	produce_array.append([produce, expire_rate]) # Production
