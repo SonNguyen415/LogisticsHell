@@ -19,30 +19,50 @@ var destinationX
 var destinationY 
 var team
 
-var battalion = preload("res://Units/BattalionUnit.tscn")
-var army_width = 1
+var initial_battalion = preload("res://Units/BattalionUnit.tscn").instance()
+var army_width = 4
 var army_depth = 1
 
-var battalion_matrix = create_2d_array(army_width, army_depth, battalion.instance())
+var battalion_matrix
 
-func create_2d_array(width, depth, value):
+var infantry_list = []
+var cavalry_list = []
+var archer_list = []
+var artillery_list = []
+
+func create_2d_array(width):
 	var a = []
+	army_depth = (infantry_list.size() + cavalry_list.size() + archer_list.size() + artillery_list.size())/width + 1
 	
-	for y in range(depth):
+	for y in range(army_depth):
 		a.append([])
-		a[y].resize(width)
-		for x in range(width):
-			a[y][x] = value
+		a[y].resize(army_width)
+	
+	if (infantry_list.size() == 1):
+		a[0][(width/2).round()] = infantry_list.erase()
+	elif (infantry_list.size() >= (width*.75).round()):
+		pass
+	elif (cavalry_list.size() > 1):
+		pass
 	return a
 
+func formation_matrix():
+	battalion_matrix = create_2d_array(army_width)
 
-func _init(team_allocation = "Player"):
+
+func _init(team_allocation = "Player", infantry_amount = [], archer_amount = [], cavalry_amount = [], artillery_amount = []):
 	team = team_allocation
+	infantry_list = infantry_amount
+	archer_list = archer_amount
+	cavalry_list = cavalry_amount
+	artillery_list = artillery_amount
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	destinationX = global_position.x
 	destinationY = global_position.y
+	
 	if (team == "Player"):
 		selectable = true
 
