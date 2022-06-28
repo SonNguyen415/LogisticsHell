@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "BattalionUnit",
+"language": "GDScript",
+"path": "res://Units/BattalionUnit.gd"
+}, {
 "base": "Resource",
 "class": "Character",
 "language": "GDScript",
@@ -20,23 +25,30 @@ _global_script_classes=[ {
 "path": "res://Characters/CharacterStats.gd"
 }, {
 "base": "Node",
+"class": "Resources",
+"language": "GDScript",
+"path": "res://Economics/Resources/Resource.gd"
+}, {
+"base": "Node",
 "class": "Settlement",
 "language": "GDScript",
-"path": "res://Production/National Production/Settlement.gd"
+"path": "res://Economics/Production/Settlement.gd"
 }, {
 "base": "Node",
 "class": "SettlementBuildings",
 "language": "GDScript",
-"path": "res://Production/National Production/SettlementBuildings.gd"
+"path": "res://Economics/Production/SettlementBuildings.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "SettlementResource",
 "language": "GDScript",
-"path": "res://Production/National Production/SettlementResources.gd"
+"path": "res://Economics/Production/SettlementResources.gd"
 } ]
 _global_script_class_icons={
+"BattalionUnit": "",
 "Character": "",
 "CharacterStats": "",
+"Resources": "",
 "Settlement": "",
 "SettlementBuildings": "",
 "SettlementResource": ""
@@ -45,11 +57,13 @@ _global_script_class_icons={
 [application]
 
 config/name="LogisticHell"
+run/main_scene="res://Characters/SkillTree/QA.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Time="*res://Time.gd"
+ResourceList="*res://Economics/Resources/ResourceList.tscn"
 GlobalResources="*res://GlobalResources.gd"
 Characters="*res://Characters.gd"
 

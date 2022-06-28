@@ -4,28 +4,3 @@
 
 [resource]
 script = ExtResource( 1 )
-tier = 4
-health = 100
-luck = 10
-diplomacy = 9
-architect = 10
-financial_management = 9
-food_production = 9
-quartermaster = 9
-hospital_management = 9
-transportation = 9
-innovation = 9
-recruitment = 0
-logistics = 9
-offense = 14
-defense = 11
-siege = 8
-maneuver = 11
-charisma = 6
-drill = 6
-tactics = 10
-retreat = 25
-cavalry_bonus = 10
-infantry_bonus = 10
-artillery = 10
-attribute = ""
