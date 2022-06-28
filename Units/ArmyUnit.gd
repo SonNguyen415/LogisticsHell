@@ -19,7 +19,7 @@ var destinationX
 var destinationY 
 var team
 
-var army_width = 4
+var army_width = 10
 var cav_inf_ratio
 var army_depth
 
@@ -34,7 +34,7 @@ func create_2d_array(width):
 	var a = []
 	if ((cavalry_list.size() + infantry_list.size()) < width):
 		width = cavalry_list.size() + infantry_list.size()
-	army_depth = ceil((infantry_list.size() + cavalry_list.size() + archer_list.size() + artillery_list.size())/width)
+	army_depth = ceil((infantry_list.size() + cavalry_list.size() + archer_list.size() + artillery_list.size())/float(width))
 	
 	if (width >= 1 and width <= 8):
 		cav_inf_ratio = 1
@@ -59,11 +59,11 @@ func create_2d_array(width):
 func fill_inf_cav(row, width):
 	if (cavalry_list.size() == 0):
 		for x in range(width):
-			if (infantry_list.size() > 1):
+			if (infantry_list.size() > 0):
 				row[x] = infantry_list.pop_front()
-			elif (archer_list.size() > 1):
+			elif (archer_list.size() > 0):
 				row[x] = archer_list.pop_front()
-			elif (artillery_list.size() > 1):
+			elif (artillery_list.size() > 0):
 				row[x] = artillery_list.pop_front()
 	else:
 		var local_ratio
@@ -81,8 +81,8 @@ func fill_inf_cav(row, width):
 		var right_bound = local_ratio
 		
 		if (local_ratio*2 > cavalry_list.size()):
-			left_bound = floor(cavalry_list.size()/2)
-			right_bound = ceil(cavalry_list.size()/2)
+			left_bound = floor(cavalry_list.size()/2.0)
+			right_bound = ceil(cavalry_list.size()/2.0)
 		
 		for x in range(width):
 			if (x < left_bound or x > (width - right_bound - 1)):
@@ -130,10 +130,10 @@ func _ready():
 	destinationX = global_position.x
 	destinationY = global_position.y
 	
-	infantry_list = ["x","x","x","x","x"]
-	archer_list = ["y","y","y","y","y","y"]
-	cavalry_list = ["z","z","z","z","z","z","z","z"]
-	artillery_list = ["w","w","w","w","w","w","w","w"]
+	infantry_list = ["x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x"]
+	archer_list = ["y","y","y","y","y","y","y"]
+	cavalry_list = ["z","z","z","z","z","z","z","z","z","z","z","z"]
+	artillery_list = ["w","w","w"]
 	
 	formation_matrix()
 	

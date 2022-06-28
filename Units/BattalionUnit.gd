@@ -37,20 +37,22 @@ var retaliation = 5
 var fortitude = 10
 var lethality = 0.3
 
-var incoming_retaliation = 0;
-var incoming_assault = 0;
 var total_losses = 0;
 
-var assault_dmg = troop_strength*assault*morale
-var retaliation_dmg = troop_strength*retaliation*morale
+var assault_dmg
+var retaliation_dmg
 
 var incoming_shock = 0
+
+var troop_type
 
 func _ready():
 	pass
 
-func losses():
-	total_losses = (incoming_assault + incoming_retaliation) - fortitude/5
+func losses(incoming_assault, incoming_retaliation):
+	total_losses = (incoming_assault + incoming_retaliation) - fortitude
+
+func total_damages():
 	assault_dmg = troop_strength*assault*morale
 	retaliation_dmg = troop_strength*retaliation*morale
 
@@ -73,9 +75,12 @@ func update_weariness():
 	if (weariness == 0):
 		activity = false
 
+func _init(unit_type = "Infantry"):
+	troop_type = unit_type
+
 func _process(delta):
 	if (fighting == true):
-		losses()
+		total_damages()
 	
 	total_troops = troop_strength + wounded + sick
 	
