@@ -19,7 +19,6 @@ var destinationX
 var destinationY 
 var team
 
-var initial_battalion = preload("res://Units/BattalionUnit.tscn").instance()
 var army_width = 4
 var cav_inf_ratio
 var army_depth
@@ -61,62 +60,61 @@ func fill_inf_cav(row, width):
 	if (cavalry_list.size() == 0):
 		for x in range(width):
 			if (infantry_list.size() > 1):
-				row[x] = infantry_list.erase()
+				row[x] = infantry_list.pop_front()
 			elif (archer_list.size() > 1):
-				row[x] = cavalry_list.erase()
+				row[x] = archer_list.pop_front()
 			elif (artillery_list.size() > 1):
-				row[x] = artillery_list.erase()
-	if (cav_inf_ratio == 1 or cavalry_list.size() <= 2):
-		if (infantry_list.size >= (width - 2) and cavalry_list.size() >= 2):
-			for x in range(width):
-				if (x == 0 or x == width - 1):
-					row[x] = cavalry_list.erase()
-				else:
-					#stopped here
-					if (infantry_list.size() > 1):
-						row[x] = infantry_list.erase()
-					elif (cavalry_list.size() > 1):
-						row[x] = cavalry_list.erase()
-					elif (artillery_list.size() > 1):
-						row[x] = artillery_list.erase()
-	elif (cav_inf_ratio == 2 or cavalry_list.size() <= 4):
-		if (infantry_list.size >= (width - 4) and cavalry_list.size() >= 4):
-			for x in range(width):
-				if (x <= 1 or x >= width - 2):
-					row[x] = cavalry_list.erase()
-				else:
-					row[x] = infantry_list.erase()
-	elif (cav_inf_ratio == 3 or cavalry_list.size() <= 6):
-		if (infantry_list.size >= (width - 6) and cavalry_list.size() >= 6):
-			for x in range(width):
-				if (x <= 2 or x >= width - 3):
-					row[x] = cavalry_list.erase()
-				else:
-					row[x] = infantry_list.erase()
-	elif (cav_inf_ratio == 4):
-		if (infantry_list.size >= (width - 8) and cavalry_list.size() >= 8):
-			for x in range(width):
-				if (x <= 3 or x >= width - 4):
-					row[x] = cavalry_list.erase()
-				else:
-					row[x] = infantry_list.erase()
+				row[x] = artillery_list.pop_front()
+	else:
+		var local_ratio
+		if ((cav_inf_ratio*2 - 1) <= cavalry_list.size()):
+			local_ratio = cav_inf_ratio
+		else:
+			if (cavalry_list.size() <= 2):
+				local_ratio = 1
+			elif (cavalry_list.size() <= 4):
+				local_ratio = 2
+			elif (cavalry_list.size() <= 6):
+				local_ratio = 3
+		
+		var left_bound = local_ratio
+		var right_bound = local_ratio
+		
+		if (local_ratio*2 > cavalry_list.size()):
+			left_bound = floor(cavalry_list.size()/2)
+			right_bound = ceil(cavalry_list.size()/2)
+		
+		for x in range(width):
+			if (x < left_bound or x > (width - right_bound - 1)):
+				row[x] = cavalry_list.pop_front()
+			else:
+				if (infantry_list.size() > 0):
+					row[x] = infantry_list.pop_front()
+				elif (cavalry_list.size() > right_bound):
+					row[x] = cavalry_list.pop_front()
+				elif (archer_list.size() > 0):
+					row[x] = archer_list.pop_front()
+				elif (artillery_list.size() > 0):
+					row[x] = artillery_list.pop_front()
+
 
 func fill_archers(row, width):
-		if (archer_list.size() > 1):
+		if (archer_list.size() > 0):
 			for x in range(width):
-				if (archer_list.size() > 1):
-					row[x] = archer_list.erase()
-				elif (infantry_list.size() > 1):
-					row[x] = infantry_list.erase()
-				elif (cavalry_list.size() > 1):
-					row[x] = cavalry_list.erase()
-				elif (artillery_list.size() > 1):
-					row[x] = artillery_list.erase()
+				if (archer_list.size() > 0):
+					row[x] = archer_list.pop_front()
+				elif (infantry_list.size() > 0):
+					row[x] = infantry_list.pop_front()
+				elif (cavalry_list.size() > 0):
+					row[x] = cavalry_list.pop_front()
+				elif (artillery_list.size() > 0):
+					row[x] = artillery_list.pop_front()
 		else:
 			fill_inf_cav(row, width)
 
 func formation_matrix():
 	battalion_matrix = create_2d_array(army_width)
+	print(battalion_matrix)
 
 
 func _init(team_allocation = "Player", infantry_amount = [], archer_amount = [], cavalry_amount = [], artillery_amount = []):
@@ -131,6 +129,13 @@ func _init(team_allocation = "Player", infantry_amount = [], archer_amount = [],
 func _ready():
 	destinationX = global_position.x
 	destinationY = global_position.y
+	
+	infantry_list = ["x","x","x","x","x"]
+	archer_list = ["y","y","y","y","y","y"]
+	cavalry_list = ["z","z","z","z","z","z","z","z"]
+	artillery_list = ["w","w","w","w","w","w","w","w"]
+	
+	formation_matrix()
 	
 	if (team == "Player"):
 		selectable = true
