@@ -21,7 +21,8 @@ var team
 
 var initial_battalion = preload("res://Units/BattalionUnit.tscn").instance()
 var army_width = 4
-var army_depth = 1
+var cav_inf_ratio
+var army_depth
 
 var battalion_matrix
 
@@ -32,19 +33,87 @@ var artillery_list = []
 
 func create_2d_array(width):
 	var a = []
-	army_depth = (infantry_list.size() + cavalry_list.size() + archer_list.size() + artillery_list.size())/width + 1
+	if ((cavalry_list.size() + infantry_list.size()) < width):
+		width = cavalry_list.size() + infantry_list.size()
+	army_depth = ceil((infantry_list.size() + cavalry_list.size() + archer_list.size() + artillery_list.size())/width)
+	
+	if (width >= 1 and width <= 8):
+		cav_inf_ratio = 1
+	elif (width >= 9 and width <= 16):
+		cav_inf_ratio = 2
+	elif (width >= 17 and width <= 32):
+		cav_inf_ratio = 3
+	else:
+		cav_inf_ratio = 4
 	
 	for y in range(army_depth):
 		a.append([])
-		a[y].resize(army_width)
+		a[y].resize(width)
 	
-	if (infantry_list.size() == 1):
-		a[0][(width/2).round()] = infantry_list.erase()
-	elif (infantry_list.size() >= (width*.75).round()):
-		pass
-	elif (cavalry_list.size() > 1):
-		pass
+	for y in range(army_depth):
+		if (y%2 == 0):
+			fill_inf_cav(a[y], width)
+		else:
+			fill_archers(a[y], width)
 	return a
+
+func fill_inf_cav(row, width):
+	if (cavalry_list.size() == 0):
+		for x in range(width):
+			if (infantry_list.size() > 1):
+				row[x] = infantry_list.erase()
+			elif (archer_list.size() > 1):
+				row[x] = cavalry_list.erase()
+			elif (artillery_list.size() > 1):
+				row[x] = artillery_list.erase()
+	if (cav_inf_ratio == 1 or cavalry_list.size() <= 2):
+		if (infantry_list.size >= (width - 2) and cavalry_list.size() >= 2):
+			for x in range(width):
+				if (x == 0 or x == width - 1):
+					row[x] = cavalry_list.erase()
+				else:
+					#stopped here
+					if (infantry_list.size() > 1):
+						row[x] = infantry_list.erase()
+					elif (cavalry_list.size() > 1):
+						row[x] = cavalry_list.erase()
+					elif (artillery_list.size() > 1):
+						row[x] = artillery_list.erase()
+	elif (cav_inf_ratio == 2 or cavalry_list.size() <= 4):
+		if (infantry_list.size >= (width - 4) and cavalry_list.size() >= 4):
+			for x in range(width):
+				if (x <= 1 or x >= width - 2):
+					row[x] = cavalry_list.erase()
+				else:
+					row[x] = infantry_list.erase()
+	elif (cav_inf_ratio == 3 or cavalry_list.size() <= 6):
+		if (infantry_list.size >= (width - 6) and cavalry_list.size() >= 6):
+			for x in range(width):
+				if (x <= 2 or x >= width - 3):
+					row[x] = cavalry_list.erase()
+				else:
+					row[x] = infantry_list.erase()
+	elif (cav_inf_ratio == 4):
+		if (infantry_list.size >= (width - 8) and cavalry_list.size() >= 8):
+			for x in range(width):
+				if (x <= 3 or x >= width - 4):
+					row[x] = cavalry_list.erase()
+				else:
+					row[x] = infantry_list.erase()
+
+func fill_archers(row, width):
+		if (archer_list.size() > 1):
+			for x in range(width):
+				if (archer_list.size() > 1):
+					row[x] = archer_list.erase()
+				elif (infantry_list.size() > 1):
+					row[x] = infantry_list.erase()
+				elif (cavalry_list.size() > 1):
+					row[x] = cavalry_list.erase()
+				elif (artillery_list.size() > 1):
+					row[x] = artillery_list.erase()
+		else:
+			fill_inf_cav(row, width)
 
 func formation_matrix():
 	battalion_matrix = create_2d_array(army_width)
