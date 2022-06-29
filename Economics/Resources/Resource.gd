@@ -8,6 +8,10 @@ General Resource Code
 
 var value = 0 # Amount Owned
 var produce = 0 # Amount Produced (Per Month)
+var resource_name
+
+func _init(call_name):
+	resource_name = call_name
 
 func set_value(val):
 	# Start of mission initialization
