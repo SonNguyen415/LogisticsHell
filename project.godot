@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/CharacterStats.gd"
 }, {
-"base": "Resources",
-"class": "Food",
-"language": "GDScript",
-"path": "res://Economics/Resources/Food.gd"
-}, {
 "base": "Node",
 "class": "Resources",
 "language": "GDScript",
@@ -53,7 +48,6 @@ _global_script_class_icons={
 "BattalionUnit": "",
 "Character": "",
 "CharacterStats": "",
-"Food": "",
 "Resources": "",
 "Settlement": "",
 "SettlementBuildings": "",
