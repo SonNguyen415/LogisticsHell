@@ -4,7 +4,7 @@
 Settlement Resource Code
 Stores information about settlement resource count and can be added/subtracted
 
-Authors: Son Nguyen, Max Kim
+Authors: Max Kim, Son Nguyen
 
 ---------------------------------------------------------------------------------------------------
 """
@@ -12,16 +12,18 @@ Authors: Son Nguyen, Max Kim
 extends Node2D
 class_name SettlementResource
 
-export (Script) var manufactured_resources = preload("res://Economics/Resources/ManufacturedMaterials.gd")
-export (Script) var raw_resources = preload("res://Economics/Resources/RawMaterials.gd")
+export (Script) var resources = preload("res://Economics/Resources/ResourceList.gd")
 
 var tax_base = 10
 var storage_dictionary = {}
 
 func _ready():
-	var material_list = raw_resources.material_list + manufactured_resources.material_list
-	for producable_material in material_list: # Material is a reserved keyword sadly
-		storage_dictionary[producable_material] = 0
+	var material_list = resources.raw_material_dictionary + resources.manufactured_material_dictionary
+	# Once saving is implemented, load data here
+	# Otherwise, well.
+		
+
+# TODO: Fix below
 
 func add_resource(resource, count, maximum):
 	# Resource: String name of resource to add

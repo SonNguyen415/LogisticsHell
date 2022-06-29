@@ -1,4 +1,5 @@
 extends Resources
+class_name Food
 
 """
 Food Code
