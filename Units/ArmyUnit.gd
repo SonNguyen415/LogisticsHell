@@ -28,6 +28,7 @@ var army_depth
 var battalion_matrix
 var combat = false
 var injured = []
+var enemy_army
 
 #Lists that hold the Battalions when out of combat
 var infantry_list = []
@@ -188,7 +189,7 @@ func _input(event):
 			elif hovering == true and clicked == true:
 				clicked = false
 				modulate = Color.white
-		elif event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_RIGHT:
+		elif event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_RIGHT and combat == false:
 			if clicked == true:
 				destinationX = get_global_mouse_position().x
 				destinationY = get_global_mouse_position().y
