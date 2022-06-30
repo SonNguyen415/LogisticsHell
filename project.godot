@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://Economics/Resources/Food.gd"
 }, {
 "base": "Node",
+"class": "GlobalValues",
+"language": "GDScript",
+"path": "res://Autoloads/GlobalResources.gd"
+}, {
+"base": "Node",
 "class": "Resources",
 "language": "GDScript",
 "path": "res://Economics/Resources/Resource.gd"
@@ -48,16 +53,23 @@ _global_script_classes=[ {
 "class": "SettlementResource",
 "language": "GDScript",
 "path": "res://Economics/Production/SettlementResources.gd"
+}, {
+"base": "Node",
+"class": "TileConstructs",
+"language": "GDScript",
+"path": "res://Economics/Constructs/TileConstructs.gd"
 } ]
 _global_script_class_icons={
 "BattalionUnit": "",
 "Character": "",
 "CharacterStats": "",
 "Food": "",
+"GlobalValues": "",
 "Resources": "",
 "Settlement": "",
 "SettlementBuildings": "",
-"SettlementResource": ""
+"SettlementResource": "",
+"TileConstructs": ""
 }
 
 [application]
