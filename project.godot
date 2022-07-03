@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "GlobalValues",
 "language": "GDScript",
-"path": "res://Autoloads/GlobalResources.gd"
+"path": "res://Main/GlobalValues.gd"
 }, {
 "base": "Node",
 "class": "Resources",
@@ -81,9 +81,9 @@ config/icon="res://icon.png"
 [autoload]
 
 Time="*res://Time.gd"
-ResourceList="*res://Economics/Resources/ResourceList.tscn"
-GlobalResources="*res://GlobalResources.gd"
+ResourceList="*True"
 Characters="*res://Characters.gd"
+Defines="*res://Autoloads/Defines.gd"
 
 [physics]
 
