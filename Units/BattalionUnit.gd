@@ -13,9 +13,9 @@ var MAX_WEARINESS = 100
 var BASE_WEARINESS_INCREASE = 0.5
 var BASE_WEARINESS_DECREASE = 1
 
-var morale = maximum_morale
 var morale_recovery = BASE_MORALE_RECOVERY
 var maximum_morale = BASE_MORALE
+var morale = maximum_morale
 
 var weariness = 0
 var weariness_increase = BASE_WEARINESS_INCREASE
@@ -31,30 +31,39 @@ var fighting = false
 var resting = false
 
 var shock = 10
-var discipline = 10
+var discipline = 2
 var assault = 10
 var retaliation = 5
 var fortitude = 10
 var lethality = 0.3
 
+#Stats regarding the actual fight
+var random = RandomNumberGenerator.new()
 var total_losses = 0;
-
-var assault_dmg
-var retaliation_dmg
-
+var total_dead = 0
 var incoming_shock = 0
+var total_moral_loss = 0
+
 
 var troop_type
 
 func _ready():
 	pass
 
-func losses(incoming_assault, incoming_retaliation):
-	total_losses = (incoming_assault + incoming_retaliation) - fortitude
+func assault(enemy_troop_strength, enemy_morale, enemy_maximum_morale, enemy_assault, enemy_lethality):
+	random.randomize()
+	total_losses += random.randfn(enemy_troop_strength/2.0, float(enemy_troop_strength))*(enemy_morale/float(enemy_maximum_morale))*enemy_assault
+	total_dead = total_losses*enemy_lethality
+	return random.randfn(troop_strength/2.0, float(troop_strength))*(morale/float(maximum_morale))*retaliation
+
+func shock(enemy_shock):
+	morale -= (enemy_shock - discipline)
 
 func total_damages():
-	assault_dmg = troop_strength*assault*morale
-	retaliation_dmg = troop_strength*retaliation*morale
+	troop_strength -= total_losses
+	wounded += (total_losses - total_dead)
+	total_losses = 0
+	total_dead = 0
 
 func check_morale():
 	if (morale < 0):
