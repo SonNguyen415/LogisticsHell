@@ -45,15 +45,15 @@ var military_buildings = {"hospitals": 0, "barracks": 0, "training field": 0, "m
 
 # Function to build a factory, adding to the number of idle factories
 func build_factory():
-	if GlobalResources.cash >= FACTORY_COST:
-		GlobalResources.cash -= FACTORY_COST
+	if GlobalValues.cash >= FACTORY_COST:
+		GlobalValues.cash -= FACTORY_COST
 		idle_factories += 1
 
 
 # Function to build a warehouse
 func build_warehouse():
-	if GlobalResources.cash >= WAREHOUSE_COST:
-		GlobalResources.cash -= WAREHOUSE_COST
+	if GlobalValues.cash >= WAREHOUSE_COST:
+		GlobalValues.cash -= WAREHOUSE_COST
 		warehouses += 1
 
 
