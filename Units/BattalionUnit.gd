@@ -50,20 +50,28 @@ var troop_type
 func _ready():
 	pass
 
-func assault(enemy_troop_strength, enemy_morale, enemy_maximum_morale, enemy_assault, enemy_lethality):
+func constrain(val, maximum, minimum):
+	if (val > maximum):
+		return maximum
+	elif (val < minimum):
+		return minimum
+
+func assault(enemy_troop_strength, enemy_morale, enemy_maximum_morale, enemy_assault, enemy_lethality, enemy_fortitude):
 	random.randomize()
-	total_losses += random.randfn(enemy_troop_strength/2.0, float(enemy_troop_strength))*(enemy_morale/float(enemy_maximum_morale))*enemy_assault
+	total_losses += constrain(round(random.randfn(enemy_troop_strength/2.0, float(enemy_troop_strength))*(enemy_morale/float(enemy_maximum_morale))*(enemy_assault - fortitude)), troop_strength - total_losses, 0)
 	total_dead = total_losses*enemy_lethality
-	return random.randfn(troop_strength/2.0, float(troop_strength))*(morale/float(maximum_morale))*retaliation
+	return constrain(round(random.randfn(troop_strength/2.0, float(troop_strength))*(morale/float(maximum_morale))*(retaliation - enemy_fortitude)), enemy_troop_strength, 0)
 
 func shock(enemy_shock):
-	morale -= (enemy_shock - discipline)
+	total_moral_loss += (enemy_shock - discipline)
 
 func total_damages():
 	troop_strength -= total_losses
 	wounded += (total_losses - total_dead)
+	morale -= total_moral_loss
 	total_losses = 0
 	total_dead = 0
+	total_moral_loss = 0
 
 func check_morale():
 	if (morale < 0):
