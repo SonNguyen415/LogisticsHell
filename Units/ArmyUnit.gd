@@ -161,7 +161,6 @@ func _init(team_allocation = "Player", infantry_amount = [], archer_amount = [],
 func _ready():
 	destinationX = global_position.x
 	destinationY = global_position.y
-	
 	if (team == "Player"):
 		selectable = true
 
@@ -172,6 +171,11 @@ func point_towards(x, y):
 	set_global_rotation_degrees(get_global_rotation_degrees() + 90)
 
 func _process(delta):
+	movement()
+	if (combat == true):
+		battle()
+
+func movement():
 	var distance = global_position.distance_to(Vector2(destinationX, destinationY));
 	if (distance > movement_speed*2):
 		var cosine = (destinationX-global_position.x)/distance
@@ -181,19 +185,8 @@ func _process(delta):
 		global_position.y += sine*movement_speed
 	elif clicked == false:
 		modulate = Color.white
-	
-	""""
-	if (combat == true):
-		for y in range(battalion_matrix.size()):
-			for x in range(battalion_matrix[y].size()):
-				if(battalion_matrix[y][x] != null and battalion_matrix[y][x].activity == false):
-					var temp = battalion_matrix[y][x]
-					battalion_matrix[y][x] = null
-					injured.append(temp)
-	"""
+
 #Player input, if you click on the army, it selects it, click on it again, deselects, right click somewhere, activates movement
-
-
 
 func _input(event):
 	if (selectable == true):
@@ -219,14 +212,39 @@ func _on_Area2D_mouse_exited():
 #Collisions with enemies
 func _on_Area2D_body_entered(body):
 	if body.team != team:
-		destinationX = global_position.x
-		destinationY = global_position.y
-		point_towards(body.global_position.x, body.global_position.y)
-		battalion_matrix = create_2d_array(army_width)
-		combat = true
-		"""
-		for y in range(battalion_matrix.size()):
+		enemy_army = body
+		start_battle()
+
+func start_battle():
+	destinationX = global_position.x
+	destinationY = global_position.y
+	point_towards(enemy_army.global_position.x, enemy_army.global_position.y)
+	battalion_matrix = create_2d_array(army_width)
+	combat = true
+	for y in range(battalion_matrix.size()):
+		for x in range(battalion_matrix[y].size()):
+			if (battalion_matrix[y][x] != null):
+				battalion_matrix[y][x].fighting = true
+
+func battle():
+	cleaning_phase()
+	attack_phase()
+	defend_phase()
+	reinforce_phase()
+
+func cleaning_phase():
+	for y in range(battalion_matrix.size()):
 			for x in range(battalion_matrix[y].size()):
-				if (battalion_matrix[y][x] != null):
-					battalion_matrix[y][x].fighting = true
-		"""
+				if(battalion_matrix[y][x] != null and battalion_matrix[y][x].activity == false):
+					var temp = battalion_matrix[y][x]
+					battalion_matrix[y][x] = null
+					injured.append(temp)
+
+func attack_phase():
+	pass
+	
+func defend_phase():
+	pass
+
+func reinforce_phase():
+	pass
