@@ -12,6 +12,24 @@ Authors: Warren Nguyen
 
 extends KinematicBody2D
 
+#Signals
+signal formation
+signal reformation
+signal cleaned
+signal attacked
+signal defended
+signal reinforced
+signal routed
+
+var formation
+var reformation
+var cleaned
+var attacked
+var defended
+var reinforced
+var rout
+
+
 #Variables that involve selection and movement
 var clicked = false
 var hovering = false
@@ -170,9 +188,30 @@ func fill_archers(row, width, inf, cav, arch, siege):
 
 #Function called every tick
 func _process(delta):
-	movement()
+	var distance = global_position.distance_to(Vector2(destinationX, destinationY));
+	if (distance > movement_speed*2):
+		movement(delta)
+	elif (clicked == false and modulate != Color.white):
+		modulate = Color.white
 	if (combat == true):
 		battle()
+	signaling()
+
+func signaling():
+	if(formation == true):
+		emit_signal("formation")
+	elif(reformation == true):
+		emit_signal("reformation")
+	elif(cleaned == true):
+		emit_signal("cleaned")
+	elif(attacked == true):
+		emit_signal("attacked")
+	elif(defended == true):
+		emit_signal("defended")
+	elif(reinforced == true):
+		emit_signal("reinforced")
+	elif(rout == true):
+		emit_signal("rout")
 
 #Function that makes the sprite point towards a thing
 func point_towards(x, y):
@@ -180,16 +219,9 @@ func point_towards(x, y):
 	set_global_rotation_degrees(get_global_rotation_degrees() + 90)
 
 #Army movement, if the distance is more than 2 times the movement speed, move
-func movement():
-	var distance = global_position.distance_to(Vector2(destinationX, destinationY));
-	if (distance > movement_speed*2):
-		var cosine = (destinationX-global_position.x)/distance
-		var sine = (destinationY-global_position.y)/distance
-		point_towards(destinationX, destinationY)
-		global_position.x += cosine*movement_speed
-		global_position.y += sine*movement_speed
-	elif clicked == false:
-		modulate = Color.white
+func movement(delta):
+	global_position = global_position.move_toward(Vector2(destinationX, destinationY), delta * movement_speed * 20)
+	point_towards(destinationX, destinationY)
 
 #Player input, if you click on the army, it selects it, click on it again, deselects, right click somewhere, activates movement
 func _input(event):
@@ -225,6 +257,9 @@ func start_battle():
 	destinationY = global_position.y
 	point_towards(enemy_army.global_position.x, enemy_army.global_position.y)
 	battalion_matrix = create_2d_array()
+	formation = true
+	yield(enemy_army, "formation")
+	enemy_army.formation = false
 	combat = true
 	for y in range(battalion_matrix.size()):
 		for x in range(battalion_matrix[y].size()):
@@ -233,10 +268,40 @@ func start_battle():
 
 #Function that goes through the phases of the battle
 func battle():
+	reformation_phase()
+	reformation = true
+	yield(enemy_army, "reformation")
+	enemy_army.reformation = false
+	
 	cleaning_phase()
+	cleaned = true
+	yield(enemy_army, "cleaned")
+	enemy_army.cleaned = false
+	
+	print("yes")
 	attack_phase()
+	attacked = true
+	yield(enemy_army, "attacked")
+	enemy_army.attacked = false
+	
 	defend_phase()
+	defended = true
+	yield(enemy_army, "defended")
+	enemy_army.defended = false
+	
 	reinforce_phase()
+	reinforced = true
+	yield(enemy_army, "reinforced")
+	enemy_army.reinforced = false
+	
+	rout_phase()
+	rout = true
+	yield(enemy_army, "routed")
+	enemy_army.rout = false
+	
+#Function that reforms the array if the combattants are unaligned
+func reformation_phase():
+	pass
 
 #Function that removes the units that have been routed
 func cleaning_phase():
@@ -253,16 +318,38 @@ func attack_phase():
 		for x in range(battalion_matrix[0].size()):
 			if (battalion_matrix[y][x] != null):
 				if (width == enemy_army.width or width == enemy_army.width - 1):
-					attack(width - 1, battalion_matrix[y][x], x)
+					attack(width - 1, battalion_matrix[y][x], x, y)
 				elif (width == enemy_army.width + 1):
-					attack(enemy_army.width - 1, battalion_matrix[y][x], x)
+					attack(enemy_army.width - 1, battalion_matrix[y][x], x, y)
 				elif (width == enemy_army.width - 2):
-					attack(width, battalion_matrix[y][x], x)
+					attack(width, battalion_matrix[y][x], x, y)
 				elif (width == enemy_army.width + 2):
-					attack(enemy_army.width, battalion_matrix[y][x], x)
+					attack(enemy_army.width, battalion_matrix[y][x], x, y)
 
-func attack(pos, battalion, shift):
-	var enemy_battalion = enemy_army.battlion_matrix[0][pos - shift]
+func attack(pos, battalion, shift, row):
+	if (row == 1 and battalion.troop_type != "Archer"):
+		return
+	var enemy_battalion 
+	if ((pos - shift) == enemy_army.width):
+		if (enemy_army.battalion_matrix[0][enemy_army.width - 1] != null):
+			enemy_battalion = enemy_army.battlion_matrix[0][enemy_army.width - 1]
+		else:
+			return
+	elif ((pos - shift) == - 1):
+		if (enemy_army.battalion_matrix[0][0] != null):
+			enemy_battalion = enemy_army.battalion_matrix[0][0]
+		else:
+			return
+	else:
+		if (enemy_army.battlion_matrix[0][pos - shift] != null):
+			enemy_battalion = enemy_army.battlion_matrix[0][pos - shift]
+		else:
+			if (((pos - shift + 1) != enemy_army.width) and (enemy_army.battlion_matrix[0][pos - shift + 1] != null)):
+				enemy_battalion = enemy_army.battlion_matrix[0][pos - shift + 1]
+			elif (((pos - shift - 1) != - 1) and (enemy_army.battlion_matrix[0][pos - shift - 1] != null)):
+				enemy_battalion = enemy_army.battlion_matrix[0][pos - shift - 1]
+			elif (enemy_army.army_depth > 1 and (enemy_army.battlion_matrix[1][pos - shift] != null)):
+				enemy_battalion = enemy_army.battlion_matrix[1][pos - shift]
 	enemy_battalion.shock(battalion.shock)
 	var retaliation_damage = enemy_battalion.assault(battalion.troop_strength, battalion.morale, battalion.maximum_morale, battalion.assault, battalion.lethality, battalion.fortitude)
 	battalion.total_losses += retaliation_damage
@@ -273,7 +360,17 @@ func defend_phase():
 	for y in range(battalion_matrix.size()):
 		for x in range(battalion_matrix[y].size()):
 			battalion_matrix[y][x].total_damages()
+			print(battalion_matrix[y][x].troop_strength)
 
 #Function that siphons units from the back ranks into the empty slots
 func reinforce_phase():
 	pass
+
+func rout_phase():
+	var routed = true
+	for y in range(battalion_matrix.size()):
+		for x in range(battalion_matrix[y].size()):
+			if (battalion_matrix[x][y] != null):
+				routed = false
+	if (routed == true):
+		self.queue_free()
