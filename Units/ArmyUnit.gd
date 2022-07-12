@@ -308,9 +308,8 @@ func cleaning_phase():
 	for y in range(battalion_matrix.size()):
 			for x in range(battalion_matrix[y].size()):
 				if(battalion_matrix[y][x] != null and battalion_matrix[y][x].activity == false):
-					var temp = battalion_matrix[y][x]
+					injured.append(battalion_matrix)
 					battalion_matrix[y][x] = null
-					injured.append(temp)
 
 #Function that has the units attack
 func attack_phase():
