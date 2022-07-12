@@ -49,6 +49,7 @@ func build_construct():
 	# location = ArmyUnit.get_location()
 	pass
 		
+		
 func store_resources(id):
 	# Remove resource from local army
 	pass

@@ -49,6 +49,7 @@ func update_monthly_income():
 	manpower += total_recruitment
 	
 	
+# This method is called every time a new recruitment center is constructed
 func update_recruitment_rate(buildings):
 	total_recruitment=recruitment_rate*buildings
 

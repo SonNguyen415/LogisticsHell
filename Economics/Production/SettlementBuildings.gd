@@ -14,16 +14,12 @@ extends Node
 class_name SettlementBuildings
 
 
-# Constants
-const WAREHOUSE_SPACE = 1000
-const WAREHOUSE_COST = 10
 
-const FACTORY_COST = 15
 
 
 # Storage buildings
-var warehouses
-var max_capacity = warehouses*WAREHOUSE_SPACE
+var warehouses = 0
+var max_capacity = warehouses*Defines.WAREHOUSE_SPACE
 var available_capacity = max_capacity
 
 
@@ -45,8 +41,8 @@ var military_buildings = {"hospitals": 0, "barracks": 0, "training field": 0, "m
 
 # Function to build a factory, adding to the number of idle factories
 func build_factory():
-	if GlobalValues.cash >= FACTORY_COST:
-		GlobalValues.cash -= FACTORY_COST
+	if GlobalValues.cash >= Defines.FACTORY_COST:
+		GlobalValues.cash -= Defines.FACTORY_COST
 		idle_factories += 1
 
 
