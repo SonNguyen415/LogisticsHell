@@ -42,14 +42,6 @@ var START_MANPOWER_1 = 10000
 var START_INNOVATIVENESS_1 = 50
 
 
-# Factories and warehouses
-const WAREHOUSE_SPACE = 1000
-const WAREHOUSE_COST = 10
-const FACTORY_COST = 15
-
-
-
-
 
 
 

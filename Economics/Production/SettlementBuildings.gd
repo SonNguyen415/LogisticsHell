@@ -48,8 +48,8 @@ func build_factory():
 
 # Function to build a warehouse
 func build_warehouse():
-	if GlobalValues.cash >= WAREHOUSE_COST:
-		GlobalValues.cash -= WAREHOUSE_COST
+	if GlobalValues.cash >= Defines.WAREHOUSE_COST:
+		GlobalValues.cash -= Defines.WAREHOUSE_COST
 		warehouses += 1
 
 
