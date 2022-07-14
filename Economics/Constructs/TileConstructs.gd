@@ -38,16 +38,22 @@ var modifier
 var location
 
 
-func _init(call_name):
+func _init(call_name, army_loc, supplies):
 	construct_name = call_name
 	count[construct_name] += 1
-	build_construct()
+	build_construct(army_loc, supplies)
 
 
-func build_construct():
+func build_construct(army_loc, supplies):
 	# subtract resource from local army
-	# location = ArmyUnit.get_army_location()
-	pass
+	if construct_name == "Depot":
+		for supply in BASE_DEPOT_COST:
+			supplies[supply] -= BASE_DEPOT_COST[supply]
+	elif construct_name == "Fort":
+		for supply in BASE_FORT_COST:
+			supplies[supply] -= BASE_FORT_COST[supply]
+			
+	
 		
 		
 func store_resources(id):

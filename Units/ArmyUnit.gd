@@ -28,7 +28,6 @@ var total_weariness
 var total_supplies
 
 
-
 #Signals
 signal formation
 signal reformation
@@ -83,11 +82,6 @@ func _ready():
 	destinationY = global_position.y
 	if (team == "Player"):
 		selectable = true
-
-
-# Function to return the current location of the 
-func get_army_location():
-	return location
 
 
 #Function that creates the battle matrix when fighting
