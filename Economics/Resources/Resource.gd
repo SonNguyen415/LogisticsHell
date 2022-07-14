@@ -16,14 +16,17 @@ func _init(call_name):
 func set_value(val):
 	# Start of mission initialization
 	value = val
+	
 func get_value():
 	# Returns value
 	# Hopefully useful in UI
 	return value
+	
 func add_value(val):
 	# Adds val to resource count
 	# Can be useful to simulate events
 	value += val
+	
 func produce():
 	# Called to produce one month's worth of goodies
 	value += produce
