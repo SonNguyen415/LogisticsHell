@@ -82,9 +82,9 @@ config/icon="res://icon.png"
 
 Time="*res://Time.gd"
 ResourceList="*res://Economics/Resources/ResourceList.tscn"
+GlobalResources="*res://GlobalResources.gd"
 Characters="*res://Characters.gd"
 Defines="*res://Autoloads/Defines.gd"
-GlobalResources="*res://GlobalResources.gd"
 
 [physics]
 
