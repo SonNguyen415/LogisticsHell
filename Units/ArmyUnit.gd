@@ -12,6 +12,23 @@ Authors: Warren Nguyen
 
 extends KinematicBody2D
 
+
+
+#Lists that hold the Battalions
+var infantry_list = []
+var cavalry_list = []
+var archer_list = []
+var artillery_list = []
+var baggage_train = []
+
+# Other Army fields
+var location
+var total_morale 
+var total_weariness 
+var total_supplies
+
+
+
 #Signals
 signal formation
 signal reformation
@@ -49,16 +66,11 @@ var combat = false
 var injured = []
 var enemy_army
 
-#Lists that hold the Battalions
-var infantry_list = []
-var cavalry_list = []
-var archer_list = []
-var artillery_list = []
-var baggage_train = []
 
 #Initializing Function
-func _init(team_allocation = "Player", infantry_amount = [], archer_amount = [], cavalry_amount = [], artillery_amount = []):
+func _init(tile_loc, team_allocation = "Player", infantry_amount = [], archer_amount = [], cavalry_amount = [], artillery_amount = []):
 	team = team_allocation
+	location = tile_loc
 	infantry_list = infantry_amount
 	archer_list = archer_amount
 	cavalry_list = cavalry_amount
@@ -71,6 +83,12 @@ func _ready():
 	destinationY = global_position.y
 	if (team == "Player"):
 		selectable = true
+
+
+# Function to return the current location of the 
+func get_army_location():
+	return location
+
 
 #Function that creates the battle matrix when fighting
 func create_2d_array():

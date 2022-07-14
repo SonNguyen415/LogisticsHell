@@ -10,7 +10,7 @@ func spawning(type, unit, posX, posY):
 	army.global_position = Vector2(posX, posY)
 	battalion._init(unit)
 	add_child(battalion)
-	army._init(type, [battalion])
+	army._init(1, type, [battalion])
 	add_child(army) #Spawns wherever script is attatched.
 
 # Called when the node enters the scene tree for the first time.

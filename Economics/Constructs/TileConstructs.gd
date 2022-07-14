@@ -46,7 +46,7 @@ func _init(call_name):
 
 func build_construct():
 	# subtract resource from local army
-	# location = ArmyUnit.get_location()
+	# location = ArmyUnit.get_army_location()
 	pass
 		
 		
