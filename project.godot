@@ -91,7 +91,6 @@ ResourceList="*res://Economics/Resources/ResourceList.tscn"
 Characters="*res://Characters.gd"
 Defines="*res://Autoloads/Defines.gd"
 GlobalResources="*res://GlobalResources.gd"
-Map="*res://Campaign Map/Map.gd"
 
 [physics]
 

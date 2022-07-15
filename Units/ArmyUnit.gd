@@ -281,18 +281,23 @@ func start_battle():
 				battalion_matrix[y][x].fighting = true
 	combat = true
 
+
+
+
+
+
 #Function that goes through the phases of the battle
 func battle():
-	reformation_phase()
-	reformation = true
-	yield(enemy_army, "reformation")
-	enemy_army.reformation = false
-
 	cleaning_phase()
 	cleaned = true
 	yield(enemy_army, "cleaned")
 	enemy_army.cleaned = false
-
+	
+	reformation_phase()
+	reformation = true
+	yield(enemy_army, "reformation")
+	enemy_army.reformation = false
+	
 	attack_phase()
 	attacked = true
 	yield(enemy_army, "attacked")
@@ -381,6 +386,7 @@ func defend_phase():
 			if (battalion_matrix[y][x] != null):
 				battalion_matrix[y][x].total_damages()
 				print(battalion_matrix[y][x].troop_strength)
+				print(battalion_matrix[y][x].morale)
 
 #Function that siphons units from the back ranks into the empty slots
 func reinforce_phase():

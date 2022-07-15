@@ -30,11 +30,11 @@ var activity = true
 var fighting = false
 var resting = false
 
-var shock = 10
-var discipline = 2
-var assault = 2
-var retaliation = .5
-var fortitude = 1
+var shock = 10.0
+var discipline = 2.0
+var assault = 2.0
+var retaliation = 0.5
+var fortitude = 1.8
 var lethality = 0.3
 
 #Stats regarding the actual fight
@@ -105,7 +105,7 @@ func _process(delta):
 	total_troops = troop_strength + wounded + sick
 	
 	check_morale()
-	update_weariness()
+	#update_weariness()
 	
 	if (activity == false and morale == MIN_MORALE):
 		activity = true
