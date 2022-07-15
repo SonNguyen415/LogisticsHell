@@ -32,9 +32,9 @@ var resting = false
 
 var shock = 10
 var discipline = 2
-var assault = 10
-var retaliation = 5
-var fortitude = 10
+var assault = 2
+var retaliation = .5
+var fortitude = 1
 var lethality = 0.3
 
 #Stats regarding the actual fight
@@ -55,12 +55,15 @@ func constrain(val, maximum, minimum):
 		return maximum
 	elif (val < minimum):
 		return minimum
+	return val
 
-func assault(enemy_troop_strength, enemy_morale, enemy_maximum_morale, enemy_assault, enemy_lethality, enemy_fortitude):
+func assault(enemy_troop_strength, enemy_morale, enemy_maximum_morale, enemy_assault, enemy_lethality, enemy_fortitude, enemy_total_losses):
 	random.randomize()
-	total_losses += constrain(round(random.randfn(enemy_troop_strength/2.0, float(enemy_troop_strength))*(enemy_morale/float(enemy_maximum_morale))*(enemy_assault - fortitude)), troop_strength - total_losses, 0)
+	var loss = constrain(round(random.randfn(enemy_troop_strength/2.0, float(enemy_troop_strength))*(enemy_morale/float(enemy_maximum_morale))*(enemy_assault - fortitude)), troop_strength - total_losses, 0)
+	print("loss " + str(loss))
+	total_losses += loss
 	total_dead = total_losses*enemy_lethality
-	return constrain(round(random.randfn(troop_strength/2.0, float(troop_strength))*(morale/float(maximum_morale))*(retaliation - enemy_fortitude)), enemy_troop_strength, 0)
+	return constrain(round(random.randfn(troop_strength/2.0, float(troop_strength))*(morale/float(maximum_morale))*(retaliation - enemy_fortitude)), enemy_troop_strength - enemy_total_losses, 0)
 
 func shock(enemy_shock):
 	total_moral_loss += (enemy_shock - discipline)

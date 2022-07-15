@@ -12,11 +12,12 @@ func spawning(type, unit, posX, posY):
 	add_child(battalion)
 	army._init(1, type, [battalion])
 	add_child(army) #Spawns wherever script is attatched.
+	return army
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	spawning("Enemy", "Infantry", 400, 400)
-	spawning("Enemy", "Infantry", 800, 200)
+	var enemy1 = spawning("Enemy", "Infantry", 400, 400)
+	var enemy2 = spawning("Enemy", "Infantry", 800, 200)
 
 
 func _input(event):

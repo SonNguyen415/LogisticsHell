@@ -44,7 +44,7 @@ var attacked
 var defended
 var reinforced
 var rout
-
+var free = true
 
 #Variables that involve selection and movement
 var clicked = false
@@ -67,7 +67,7 @@ var enemy_army
 
 
 #Initializing Function
-func _init(tile_loc, team_allocation = "Player", infantry_amount = [], archer_amount = [], cavalry_amount = [], artillery_amount = []):
+func _init(tile_loc = 1, team_allocation = "Player", infantry_amount = [], archer_amount = [], cavalry_amount = [], artillery_amount = []):
 	team = team_allocation
 	location = tile_loc
 	infantry_list = infantry_amount
@@ -114,10 +114,10 @@ func create_2d_array():
 		if ((cav_list.size() + inf_list.size() + arch_list.size())/2 < width):
 			if (cav_list.size() + inf_list.size() < arch_list.size()):
 				width = ceil((cav_list.size() + inf_list.size() + arch_list.size())/2.0)
-			elif (cav_list.size() + inf_list.size() > 3):
+			elif (cav_list.size() + inf_list.size() > 1):
 				width = cav_list.size() + inf_list.size()
 			else:
-				width = 3
+				width = 1
 	
 	army_depth = ceil((inf_list.size() + cav_list.size() + arch_list.size() + siege_list.size())/float(width))
 	
@@ -139,6 +139,7 @@ func create_2d_array():
 			fill_inf_cav(a[y], width, inf_list, cav_list, arch_list, siege_list)
 		else:
 			fill_archers(a[y], width, inf_list, cav_list, arch_list, siege_list)
+
 	return a
 
 #Function that fills the infantry and cavalary rows
@@ -205,9 +206,10 @@ func _process(delta):
 		movement(delta)
 	elif (clicked == false and modulate != Color.white):
 		modulate = Color.white
-	if (combat == true):
-		battle()
 	signaling()
+	if (combat == true and free == true):
+		free = false
+		battle()
 
 func signaling():
 	if(formation == true):
@@ -268,15 +270,16 @@ func start_battle():
 	destinationX = global_position.x
 	destinationY = global_position.y
 	point_towards(enemy_army.global_position.x, enemy_army.global_position.y)
+	
 	battalion_matrix = create_2d_array()
 	formation = true
 	yield(enemy_army, "formation")
 	enemy_army.formation = false
-	combat = true
 	for y in range(battalion_matrix.size()):
 		for x in range(battalion_matrix[y].size()):
 			if (battalion_matrix[y][x] != null):
 				battalion_matrix[y][x].fighting = true
+	combat = true
 
 #Function that goes through the phases of the battle
 func battle():
@@ -284,13 +287,12 @@ func battle():
 	reformation = true
 	yield(enemy_army, "reformation")
 	enemy_army.reformation = false
-	
+
 	cleaning_phase()
 	cleaned = true
 	yield(enemy_army, "cleaned")
 	enemy_army.cleaned = false
-	
-	print("yes")
+
 	attack_phase()
 	attacked = true
 	yield(enemy_army, "attacked")
@@ -325,7 +327,12 @@ func cleaning_phase():
 
 #Function that has the units attack
 func attack_phase():
-	for y in range(2):
+	var rows
+	if (enemy_army.army_depth > 1):
+		rows = 2
+	else:
+		rows = 1
+	for y in range(rows):
 		for x in range(battalion_matrix[0].size()):
 			if (battalion_matrix[y][x] != null):
 				if (width == enemy_army.width or width == enemy_army.width - 1):
@@ -340,10 +347,11 @@ func attack_phase():
 func attack(pos, battalion, shift, row):
 	if (row == 1 and battalion.troop_type != "Archer"):
 		return
-	var enemy_battalion 
+	var enemy_battalion
+	
 	if ((pos - shift) == enemy_army.width):
 		if (enemy_army.battalion_matrix[0][enemy_army.width - 1] != null):
-			enemy_battalion = enemy_army.battlion_matrix[0][enemy_army.width - 1]
+			enemy_battalion = enemy_army.battalion_matrix[0][enemy_army.width - 1]
 		else:
 			return
 	elif ((pos - shift) == - 1):
@@ -352,26 +360,27 @@ func attack(pos, battalion, shift, row):
 		else:
 			return
 	else:
-		if (enemy_army.battlion_matrix[0][pos - shift] != null):
-			enemy_battalion = enemy_army.battlion_matrix[0][pos - shift]
+		if (enemy_army.battalion_matrix[0][0] != null):
+			enemy_battalion = enemy_army.battalion_matrix[0][pos - shift]
 		else:
-			if (((pos - shift + 1) != enemy_army.width) and (enemy_army.battlion_matrix[0][pos - shift + 1] != null)):
-				enemy_battalion = enemy_army.battlion_matrix[0][pos - shift + 1]
-			elif (((pos - shift - 1) != - 1) and (enemy_army.battlion_matrix[0][pos - shift - 1] != null)):
-				enemy_battalion = enemy_army.battlion_matrix[0][pos - shift - 1]
-			elif (enemy_army.army_depth > 1 and (enemy_army.battlion_matrix[1][pos - shift] != null)):
-				enemy_battalion = enemy_army.battlion_matrix[1][pos - shift]
+			if (((pos - shift + 1) != enemy_army.width) and (enemy_army.battalion_matrix[0][pos - shift + 1] != null)):
+				enemy_battalion = enemy_army.battalion_matrix[0][pos - shift + 1]
+			elif (((pos - shift - 1) != - 1) and (enemy_army.battalion_matrix[0][pos - shift - 1] != null)):
+				enemy_battalion = enemy_army.battalion_matrix[0][pos - shift - 1]
+			elif (enemy_army.army_depth > 1 and (enemy_army.battalion_matrix[1][pos - shift] != null)):
+				enemy_battalion = enemy_army.battalion_matrix[1][pos - shift]
 	enemy_battalion.shock(battalion.shock)
-	var retaliation_damage = enemy_battalion.assault(battalion.troop_strength, battalion.morale, battalion.maximum_morale, battalion.assault, battalion.lethality, battalion.fortitude)
+	var retaliation_damage = enemy_battalion.assault(battalion.troop_strength, battalion.morale, battalion.maximum_morale, battalion.assault, battalion.lethality, battalion.fortitude, battalion.total_losses)
 	battalion.total_losses += retaliation_damage
-	battalion.total_dead += enemy_army.lethality
+	battalion.total_dead += (enemy_battalion.lethality*retaliation_damage)
 
 #Function that has the units take damage
 func defend_phase():
 	for y in range(battalion_matrix.size()):
 		for x in range(battalion_matrix[y].size()):
-			battalion_matrix[y][x].total_damages()
-			print(battalion_matrix[y][x].troop_strength)
+			if (battalion_matrix[y][x] != null):
+				battalion_matrix[y][x].total_damages()
+				print(battalion_matrix[y][x].troop_strength)
 
 #Function that siphons units from the back ranks into the empty slots
 func reinforce_phase():
@@ -385,3 +394,4 @@ func rout_phase():
 				routed = false
 	if (routed == true):
 		self.queue_free()
+	free = true
