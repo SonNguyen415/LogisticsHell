@@ -23,10 +23,8 @@ var BASE_DEPOT_TIME = 24
 var BASE_FORT_COST = {'Stone': 2, 'Wood': 10}
 var BASE_FORT_TIME = 24*2
 
-
-
 # Static attribute
-const count = {'depot': 0, 'fort': 0}
+const count = {'Depot': 0, 'Fort': 0}
 
 # Class attributes
 var construct_name
@@ -49,10 +47,12 @@ func build_construct(army_loc, supplies):
 	if construct_name == "Depot":
 		for supply in BASE_DEPOT_COST:
 			supplies[supply] -= BASE_DEPOT_COST[supply]
+		Map.build_depot(location)
 	elif construct_name == "Fort":
 		for supply in BASE_FORT_COST:
 			supplies[supply] -= BASE_FORT_COST[supply]
-			
+		Map.build_fort(location)	
+	
 	
 		
 		
