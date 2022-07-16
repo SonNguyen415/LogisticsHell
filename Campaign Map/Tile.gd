@@ -1,18 +1,8 @@
 extends Resource
-class_name Tile
 
 
-var id 
-var terrain
-var carrying_capacity
-var base_width
-var defensive_bonus
-var movement_modifier
-var resources
-var modifier
-
-
-
+# Declare member variables here. Examples:
+  
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

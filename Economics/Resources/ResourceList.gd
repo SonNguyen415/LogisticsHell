@@ -11,29 +11,25 @@ Authors: Max Kim
 extends Node2D
 
 # Raw Materials
-var food = Food.instance("Food")
-var wood = Resources.instance("Wood")
-var copper = Resources.instance("Copper")
-var cloth = Resources.instance("Cloth")
-var iron = Resources.instance("Iron")
-var steel = Resources.instance("Steel")
-var glass = Resources.instance("Glass")
-var gunpowder = Resources.instance("Gunpowder")
-var smokeless_powder = Resources.instance("Smokeless Powder")
+var grain = Food.instance("Grain")
+var fodder = Resources.instance("Fodder")
 var horses = Resources.instance("Horses")
-var coal = Resources.instance("Coal")
-var oil = Resources.instance("Oil")
-var electricity = Resources.instance("Electricity")
+var animals = Resources.instance("Animals")
+var rocks = Resources.instance("Rock")
+var clay = Resources.instance("Clay")
+var wood = Resources.instance("Wood")
+var plants = Resources.instance("Plants")
+var iron = Resources.instance("Iron")
+
 
 # Adding another one down the line should be straightforward
 # Also update the dictionary in that case
 # Also if anything has special behavior i.e. food, then just create a dependent class or sth
 
 # Raw Material Dictionary
-var raw_material_dictionary = {"Food": food, "Wood": wood, "Copper": copper, "Cloth": cloth,
-								"Iron": iron, "Steel": steel, "Glass": glass, "Gunpowder": gunpowder,
-								"Smokeless Powder": smokeless_powder, "Horses": horses, "Coal": coal, "Oil": oil,
-								"Electricity": electricity,}
+var raw_material_dictionary = {"Grain": grain, "Wood": wood, "Fodder": fodder, "Clay": clay,
+								"Horses": horses, "Animals": animals, "Rocks": rocks, "Plants": plants,
+								"Iron": iron}
 
 
 # Manufactured Materials

@@ -54,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Economics/Production/SettlementResources.gd"
 }, {
-"base": "Resource",
-"class": "Tile",
-"language": "GDScript",
-"path": "res://Campaign Map/Tile.gd"
-}, {
 "base": "Node",
 "class": "TileConstructs",
 "language": "GDScript",
@@ -74,7 +69,6 @@ _global_script_class_icons={
 "Settlement": "",
 "SettlementBuildings": "",
 "SettlementResource": "",
-"Tile": "",
 "TileConstructs": ""
 }
 
