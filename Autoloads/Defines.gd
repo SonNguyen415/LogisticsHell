@@ -43,7 +43,11 @@ var START_INNOVATIVENESS_1 = 50
 
 
 
-
+# Vehicles values
+const WAGON_SPEED = 5
+const CART_SPEED = 8
+const WAGON_CAPACITY = 100
+const CART_CAPACITY = 100
 
 
 
