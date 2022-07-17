@@ -42,7 +42,16 @@ var START_MANPOWER_1 = 10000
 var START_INNOVATIVENESS_1 = 50
 
 
+# Battalion Values
+const MAX_BATTALION_SIZE = 500
 
+var base_max_morale = 100.0
+const MORALE_THRESHOLD = 10.0
+var base_morale_recovery = .2
+
+const MAX_WEARINESS = 100
+var base_weariness_increase = 0.5
+var base_weariness_decrease = 1
 
 
 
