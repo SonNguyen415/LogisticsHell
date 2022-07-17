@@ -3,7 +3,7 @@ extends Node2D
 
 class_name BattalionUnit
 
-var maximum_morale = Defines.base_max_morale setget set_maximum_morale, get_maxmimum_morale
+var maximum_morale = Defines.base_max_morale setget set_maximum_morale, get_maximum_morale
 var morale_recovery = Defines.base_morale_recovery setget set_morale_recovery, get_morale_recovery
 var morale = maximum_morale setget set_morale, get_morale
 
@@ -21,10 +21,10 @@ var fighting = false setget set_fighting, get_fighting
 var resting = false setget set_resting, get_resting
 
 var shock = 5.0 setget set_shock, get_shock
-var discipline = 2.0 setget set_discipline, get_discipline
-var assault = 2.0 setget set_assault, get_assault
-var retaliation = 0.5 setget set_retaliation, get_retaliation
-var fortitude = 1.8 setget set_fortitude, get_fortitude
+var discipline = 1.0 setget set_discipline, get_discipline
+var assault = 1.2 setget set_assault, get_assault
+var retaliation = 1.0 setget set_retaliation, get_retaliation
+var fortitude = 0.8 setget set_fortitude, get_fortitude
 var lethality = 0.3 setget set_lethality, get_lethality
 
 #Stats regarding the actual fight
@@ -40,7 +40,7 @@ var troop_type setget set_troop_type, get_troop_type
 func set_maximum_morale(value):
 	maximum_morale = value
 
-func get_maxmimum_morale():
+func get_maximum_morale():
 	return maximum_morale
 
 func set_morale_recovery(value):
@@ -181,8 +181,11 @@ func constrain(val, maximum, minimum):
 
 func assault(enemy_troop_strength, enemy_morale, enemy_maximum_morale, enemy_assault, enemy_lethality, enemy_fortitude, enemy_total_losses):
 	random.randomize()
-	var loss = constrain(round(random.randfn(enemy_troop_strength/2.0, float(enemy_troop_strength))*(enemy_morale/float(enemy_maximum_morale))*(enemy_assault - fortitude)), troop_strength - total_losses, 0)
-	print("loss " + str(loss))
+	var rand = random.randi_range(enemy_troop_strength/2.0, float(enemy_troop_strength))
+	var enemy_morale_percent = enemy_morale/float(enemy_maximum_morale)
+	var attack = enemy_assault - fortitude
+	print ("rand " + str(rand) + " percent " + str(enemy_morale_percent) + " attack " + str(attack))
+	var loss = constrain(rand*enemy_morale_percent*attack, troop_strength - total_losses, 0)
 	total_losses += loss
 	total_dead = total_losses*enemy_lethality
 	return constrain(round(random.randfn(troop_strength/2.0, float(troop_strength))*(morale/float(maximum_morale))*(retaliation - enemy_fortitude)), enemy_troop_strength - enemy_total_losses, 0)
@@ -197,34 +200,33 @@ func total_damages():
 	total_losses = 0
 	total_dead = 0
 	total_moral_loss = 0
+	if (troop_strength == 0):
+		activity = false
 
 func update_morale():
 	constrain(morale, maximum_morale, 0)
 	if (activity == true and morale == 0):
 		activity = false
-	if (activity == false and morale >= Defines.MORALE_THRESHOLD):
+	if (activity == false and morale >= Defines.MORALE_THRESHOLD and fighting == false):
 		activity = true
 	if (morale < maximum_morale and fighting == false):
 		morale += constrain((morale_recovery*(maximum_morale - morale)), (maximum_morale - morale), 1)
 
 func update_weariness():
-	if (fighting == false and resting == false and weariness < Defines.MAXIMUM_WEARINESS):
+	if (fighting == false and resting == false and weariness < Defines.MAX_WEARINESS):
 		weariness += weariness_increase
-	elif (fighting == true and weariness < Defines.MAXIMUM_WEARINESS):
+	elif (fighting == true and weariness < Defines.MAX_WEARINESS):
 		weariness += weariness_increase*2
 	elif (resting == true and weariness > 0):
 		weariness -= weariness_decrease
-	constrain(weariness, Defines.MAXIMUM_WEARINESS, 0)
+	constrain(weariness, Defines.MAX_WEARINESS, 0)
 
 func _init(unit_type = "Infantry"):
 	troop_type = unit_type
 
 func _process(delta):
 	total_troops = troop_strength + wounded + sick
-	if (fighting == true):
-		total_damages()
-	total_troops = troop_strength + wounded + sick
 	update_morale()
-	update_weariness()
+	#update_weariness()
 	
 	

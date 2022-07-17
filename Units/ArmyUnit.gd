@@ -34,7 +34,7 @@ var movement_speed = 10
 var selectable = false
 var destinationX 
 var destinationY 
-var team
+var team setget set_team, get_team
 
 #Variables that involve the army matrix
 var army_width = 4
@@ -42,7 +42,7 @@ var width setget set_width, get_width
 var cav_inf_ratio
 var army_depth setget set_army_depth, get_army_depth
 var battalion_matrix setget set_battalion, get_battalion
-var combat = false
+var combat = false setget set_combat, get_combat
 var injured = []
 var enemy_army
 var formation = false setget set_formation, get_formation
@@ -52,6 +52,12 @@ var current_state = "Start"
 var opening = true
 
 #Sets and Gets
+func set_team(value):
+	team = value
+
+func get_team():
+	return team
+
 func set_width(value):
 	width = value
 
@@ -69,6 +75,12 @@ func set_battalion(value):
 
 func get_battalion():
 	return battalion_matrix
+
+func set_combat(value):
+	combat = value
+
+func get_combat():
+	return combat
 
 func set_formation(value):
 	formation = value
@@ -282,12 +294,12 @@ func start_battle():
 #Function that goes through the phases of the battle
 func battle():
 	match (current_state):
-		"Start", "Reform":
+		"Start":
 			reformation_phase()
-			if (current_state == "Reform"):
-				current_state = "Rout"
-			elif (current_state == "Start"):
-				current_state = "Attack"
+			current_state = "Attack"
+		"Reform":
+			reformation_phase()
+			current_state = "Rout"
 		"Rout":
 			rout_phase()
 			if (opening == true):
@@ -321,8 +333,8 @@ func rout_phase():
 			if (battalion_matrix[x][y] != null):
 				routed = false
 	if (routed == true):
+		enemy_army.set_combat(false)
 		self.queue_free()
-	enemy_army.set_combat(false)
 
 #Function that siphons units from the back ranks into the empty slots
 func reinforce_phase():
@@ -385,9 +397,10 @@ func defend_phase():
 			if (battalion_matrix[y][x] != null):
 				battalion_matrix[y][x].total_damages()
 				battalion_matrix[y][x].update_weariness()
-				print(battalion_matrix[y][x].get_troop_strength())
-				print(battalion_matrix[y][x].get_morale())
-				print(battalion_matrix[y][x].get_weariness())
+				print(team + " Troop Strength: " + str(battalion_matrix[y][x].get_troop_strength()))
+				print(team + " Injured: " + str(battalion_matrix[y][x].get_wounded()))
+				print(team + " Morale: " + str(battalion_matrix[y][x].get_morale()))
+				print(team + " Weariness: " + str(battalion_matrix[y][x].get_weariness()))
 
 #Function that removes the units that have been routed
 func cleaning_phase():
