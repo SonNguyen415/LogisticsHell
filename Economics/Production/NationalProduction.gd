@@ -24,6 +24,7 @@ var producing_factories = {"medical_convoy": 0, "medicine": 0, "hygiene": 0,
 # This factory is special cuz it affects the global resource manpower
 var recruitment_center = 0
 
+
 # Build a new factory
 func construct_factory():
 	factory_count += 1

@@ -54,15 +54,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Economics/Production/SettlementResources.gd"
 }, {
-"base": "Resource",
-"class": "Tile",
-"language": "GDScript",
-"path": "res://Campaign Map/Tile.gd"
-}, {
 "base": "Node",
 "class": "TileConstructs",
 "language": "GDScript",
 "path": "res://Economics/Constructs/TileConstructs.gd"
+}, {
+"base": "Resources",
+"class": "Vehicles",
+"language": "GDScript",
+"path": "res://Economics/Resources/Vehicles.gd"
 } ]
 _global_script_class_icons={
 "BattalionUnit": "",
@@ -74,8 +74,8 @@ _global_script_class_icons={
 "Settlement": "",
 "SettlementBuildings": "",
 "SettlementResource": "",
-"Tile": "",
-"TileConstructs": ""
+"TileConstructs": "",
+"Vehicles": ""
 }
 
 [application]
@@ -91,6 +91,11 @@ ResourceList="*res://Economics/Resources/ResourceList.tscn"
 Characters="*res://Characters.gd"
 Defines="*res://Autoloads/Defines.gd"
 GlobalResources="*res://GlobalResources.gd"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
 
 [physics]
 

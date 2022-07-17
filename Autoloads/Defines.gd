@@ -42,6 +42,7 @@ var START_MANPOWER_1 = 10000
 var START_INNOVATIVENESS_1 = 50
 
 
+
 # Battalion Values
 const MAX_BATTALION_SIZE = 500
 
@@ -52,6 +53,13 @@ var base_morale_recovery = .2
 const MAX_WEARINESS = 100
 var base_weariness_increase = 0.5
 var base_weariness_decrease = 1
+
+
+# Vehicles values
+const WAGON_SPEED = 5
+const CART_SPEED = 8
+const WAGON_CAPACITY = 100
+const CART_CAPACITY = 100
 
 
 

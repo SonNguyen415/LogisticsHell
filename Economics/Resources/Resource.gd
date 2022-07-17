@@ -6,7 +6,7 @@ General Resource Code
 -Max
 """
 
-var value = 0 # Amount Owned
+var value = 0 setget set_value, get_value # Amount Owned
 var produce = 0 # Amount Produced (Per Month)
 var resource_name
 
