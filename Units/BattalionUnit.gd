@@ -20,11 +20,11 @@ var activity = true setget set_activity, get_activity
 var fighting = false setget set_fighting, get_fighting
 var resting = false setget set_resting, get_resting
 
-var shock = 5.0 setget set_shock, get_shock
-var discipline = 1.0 setget set_discipline, get_discipline
-var assault = 1.2 setget set_assault, get_assault
-var retaliation = 1.0 setget set_retaliation, get_retaliation
-var fortitude = 0.8 setget set_fortitude, get_fortitude
+var shock = 15.0 setget set_shock, get_shock
+var discipline = 5.0 setget set_discipline, get_discipline
+var assault = 12.0 setget set_assault, get_assault
+var retaliation = 11.0 setget set_retaliation, get_retaliation
+var fortitude = 10.0 setget set_fortitude, get_fortitude
 var lethality = 0.3 setget set_lethality, get_lethality
 
 #Stats regarding the actual fight
@@ -183,15 +183,26 @@ func assault(enemy_troop_strength, enemy_morale, enemy_maximum_morale, enemy_ass
 	random.randomize()
 	var rand = random.randi_range(enemy_troop_strength/2.0, float(enemy_troop_strength))
 	var enemy_morale_percent = enemy_morale/float(enemy_maximum_morale)
-	var attack = enemy_assault - fortitude
-	print ("rand " + str(rand) + " percent " + str(enemy_morale_percent) + " attack " + str(attack))
-	var loss = constrain(rand*enemy_morale_percent*attack, troop_strength - total_losses, 0)
+	var attack = enemy_assault - fortitude	
+	var loss = round(constrain(rand*enemy_morale_percent*attack*Defines.attack_constant, troop_strength - total_losses, 0))
+	print ("attack " + str(loss))
+	
 	total_losses += loss
-	total_dead = total_losses*enemy_lethality
-	return constrain(round(random.randfn(troop_strength/2.0, float(troop_strength))*(morale/float(maximum_morale))*(retaliation - enemy_fortitude)), enemy_troop_strength - enemy_total_losses, 0)
+	total_dead = loss*enemy_lethality
+	
+	var rand2 = random.randi_range(troop_strength/2.0, float(troop_strength))
+	var moral_percent = morale/float(maximum_morale)
+	var counterattack = retaliation - enemy_fortitude
+	var enemy_loss = round(constrain(rand2*moral_percent*counterattack*Defines.attack_constant, enemy_troop_strength - enemy_total_losses, 0))
+	print("counterattack " + str(enemy_loss))
+	
+	return enemy_loss
 
 func shock(enemy_shock):
-	total_moral_loss += constrain((enemy_shock - discipline), (morale - total_moral_loss), 0)
+	var rand = random.randi_range(-3, 3)
+	var morale_loss = constrain((enemy_shock - discipline + rand), (morale - total_moral_loss), 0)
+	morale -= morale_loss
+	
 
 func total_damages():
 	troop_strength -= total_losses

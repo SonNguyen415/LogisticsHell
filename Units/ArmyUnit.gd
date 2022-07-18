@@ -48,8 +48,8 @@ var enemy_army
 var formation = false setget set_formation, get_formation
 signal formation
 var ready = true setget set_ready, get_ready
-var current_state = "Start"
-var opening = true
+var current_state = "Start" setget set_state, get_state
+var opening = false
 
 #Sets and Gets
 func set_team(value):
@@ -93,6 +93,12 @@ func set_ready(value):
 
 func get_ready():
 	return ready
+
+func set_state(value):
+	current_state = value
+
+func get_state():
+	return current_state
 
 #Initializing Function
 func _init(tile_loc = 1, team_allocation = "Player", infantry_amount = [], archer_amount = [], cavalry_amount = [], artillery_amount = []):
@@ -334,6 +340,7 @@ func rout_phase():
 				routed = false
 	if (routed == true):
 		enemy_army.set_combat(false)
+		enemy_army.set_state("Start")
 		self.queue_free()
 
 #Function that siphons units from the back ranks into the empty slots
@@ -397,10 +404,7 @@ func defend_phase():
 			if (battalion_matrix[y][x] != null):
 				battalion_matrix[y][x].total_damages()
 				battalion_matrix[y][x].update_weariness()
-				print(team + " Troop Strength: " + str(battalion_matrix[y][x].get_troop_strength()))
-				print(team + " Injured: " + str(battalion_matrix[y][x].get_wounded()))
-				print(team + " Morale: " + str(battalion_matrix[y][x].get_morale()))
-				print(team + " Weariness: " + str(battalion_matrix[y][x].get_weariness()))
+				print(team + " Troop Strength: " + str(battalion_matrix[y][x].get_troop_strength()) + " Injured: " + str(battalion_matrix[y][x].get_wounded()) + " Morale: " + str(battalion_matrix[y][x].get_morale()) + " Weariness: " + str(battalion_matrix[y][x].get_weariness()))
 
 #Function that removes the units that have been routed
 func cleaning_phase():

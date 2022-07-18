@@ -53,6 +53,7 @@ const MAX_WEARINESS = 100
 var base_weariness_increase = 0.5
 var base_weariness_decrease = 1
 
+var attack_constant = .1
 
 # Vehicles values
 const WAGON_SPEED = 5
