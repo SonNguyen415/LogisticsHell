@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/label.png-8effb0f322ecbb2d06daa668d6bc125d.stex"
+path="res://.import/1920Testing.jpg-641e7947abd955e1ef95be66dc555252.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/label.png"
-dest_files=[ "res://.import/label.png-8effb0f322ecbb2d06daa668d6bc125d.stex" ]
+source_file="res://Assets/1920Testing.jpg"
+dest_files=[ "res://.import/1920Testing.jpg-641e7947abd955e1ef95be66dc555252.stex" ]
 
 [params]
 
