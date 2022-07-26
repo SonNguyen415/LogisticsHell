@@ -6,12 +6,16 @@ var batnode = preload("res://Units/BattalionUnit.tscn")
 
 func spawning(type, unit, posX, posY):
 	var army = node.instance()
-	var battalion = batnode.instance()
 	army.global_position = Vector2(posX, posY)
-	battalion._init(unit)
-	add_child(battalion)
-	army._init(1, type, [battalion])
-	add_child(army) #Spawns wherever script is attatched.
+	var battalion = []
+	for x in range(3):
+		battalion.append(batnode.instance())
+		battalion[x]._init(unit)
+	for x in range (3):
+		add_child(battalion[x])
+	
+	army._init(1, type, battalion)
+	add_child(army)
 	return army
 
 # Called when the node enters the scene tree for the first time.

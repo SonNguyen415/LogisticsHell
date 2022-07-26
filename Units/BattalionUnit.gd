@@ -185,7 +185,6 @@ func assault(enemy_troop_strength, enemy_morale, enemy_maximum_morale, enemy_ass
 	var enemy_morale_percent = enemy_morale/float(enemy_maximum_morale)
 	var attack = enemy_assault - fortitude	
 	var loss = round(constrain(rand*enemy_morale_percent*attack*Defines.attack_constant, troop_strength - total_losses, 0))
-	print ("attack " + str(loss))
 	
 	total_losses += loss
 	total_dead = loss*enemy_lethality
@@ -194,7 +193,6 @@ func assault(enemy_troop_strength, enemy_morale, enemy_maximum_morale, enemy_ass
 	var moral_percent = morale/float(maximum_morale)
 	var counterattack = retaliation - enemy_fortitude
 	var enemy_loss = round(constrain(rand2*moral_percent*counterattack*Defines.attack_constant, enemy_troop_strength - enemy_total_losses, 0))
-	print("counterattack " + str(enemy_loss))
 	
 	return enemy_loss
 
