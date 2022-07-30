@@ -327,7 +327,11 @@ func battle():
 
 #Function that reforms the array if the combattants are unaligned
 func reformation_phase():
-	pass
+	var new_army = false
+	if (new_army == true):
+		battalion_matrix = create_2d_array(terrain_width)
+	if (width > enemy_army.get_width() + 2):
+		battalion_matrix = create_2d_array(enemy_army.get_width() + 2)
 
 func rout_phase():
 	var routed = true
