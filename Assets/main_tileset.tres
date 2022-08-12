@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=42 format=2]
+[gd_resource type="TileSet" load_steps=40 format=2]
 
 [ext_resource path="res://Assets/Tileset/desert_tile1.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Tileset/desert_tile2.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Assets/Tileset/highlands_tile3.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Tileset/highlands_tile1.png" type="Texture" id=21]
 [ext_resource path="res://Assets/Tileset/floodplain_tile1.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Tileset/Woods/woods_tile.png" type="Texture" id=23]
 [ext_resource path="res://Assets/Tileset/hills_tile1.png" type="Texture" id=24]
 [ext_resource path="res://Assets/Tileset/jungle_tile3.png" type="Texture" id=25]
 [ext_resource path="res://Assets/Tileset/largepass_tile1.png" type="Texture" id=26]
@@ -38,9 +39,6 @@
 [ext_resource path="res://Assets/Tileset/smallpass_tile2.png" type="Texture" id=40]
 [ext_resource path="res://Assets/Tileset/smallpass_tile3.png" type="Texture" id=41]
 [ext_resource path="res://Assets/Tileset/swamp_tile3.png" type="Texture" id=42]
-[ext_resource path="res://Assets/Tileset/woods_tile1.png" type="Texture" id=43]
-[ext_resource path="res://Assets/Tileset/woods_tile2.png" type="Texture" id=44]
-[ext_resource path="res://Assets/Tileset/woods_tile3.png" type="Texture" id=45]
 
 [resource]
 0/name = "DesertTile1"
@@ -547,48 +545,6 @@
 41/shape_one_way_margin = 0.0
 41/shapes = [  ]
 41/z_index = 0
-42/name = "WoodsTile1"
-42/texture = ExtResource( 43 )
-42/tex_offset = Vector2( 0, 0 )
-42/modulate = Color( 1, 1, 1, 1 )
-42/region = Rect2( 0, 0, 128, 95 )
-42/tile_mode = 0
-42/occluder_offset = Vector2( 64, 47.5 )
-42/navigation_offset = Vector2( 64, 47.5 )
-42/shape_offset = Vector2( 0, 0 )
-42/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-42/shape_one_way = false
-42/shape_one_way_margin = 0.0
-42/shapes = [  ]
-42/z_index = 0
-43/name = "WoodsTile2"
-43/texture = ExtResource( 44 )
-43/tex_offset = Vector2( 0, 0 )
-43/modulate = Color( 1, 1, 1, 1 )
-43/region = Rect2( 0, 0, 128, 95 )
-43/tile_mode = 0
-43/occluder_offset = Vector2( 64, 47.5 )
-43/navigation_offset = Vector2( 64, 47.5 )
-43/shape_offset = Vector2( 0, 0 )
-43/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-43/shape_one_way = false
-43/shape_one_way_margin = 0.0
-43/shapes = [  ]
-43/z_index = 0
-44/name = "WoodsTile3"
-44/texture = ExtResource( 45 )
-44/tex_offset = Vector2( 0, 0 )
-44/modulate = Color( 1, 1, 1, 1 )
-44/region = Rect2( 0, 0, 128, 95 )
-44/tile_mode = 0
-44/occluder_offset = Vector2( 64, 47.5 )
-44/navigation_offset = Vector2( 64, 47.5 )
-44/shape_offset = Vector2( 0, 0 )
-44/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-44/shape_one_way = false
-44/shape_one_way_margin = 0.0
-44/shapes = [  ]
-44/z_index = 0
 45/name = "meadow_tile.png 45"
 45/texture = ExtResource( 10 )
 45/tex_offset = Vector2( 0, 0 )
@@ -631,3 +587,17 @@
 47/shape_one_way_margin = 0.0
 47/shapes = [  ]
 47/z_index = 0
+48/name = "woods_tile.png 48"
+48/texture = ExtResource( 23 )
+48/tex_offset = Vector2( 0, 0 )
+48/modulate = Color( 1, 1, 1, 1 )
+48/region = Rect2( 0, 0, 128, 96 )
+48/tile_mode = 0
+48/occluder_offset = Vector2( 0, 0 )
+48/navigation_offset = Vector2( 0, 0 )
+48/shape_offset = Vector2( 0, 0 )
+48/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+48/shape_one_way = false
+48/shape_one_way_margin = 0.0
+48/shapes = [  ]
+48/z_index = 0

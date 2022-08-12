@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/woods_tile3.png-a6d32799d2740c153609d54794eda738.stex"
+path="res://.import/tree1woodless.png-11d0eaa17217a086755284ee5f0e2816.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tileset/woods_tile3.png"
-dest_files=[ "res://.import/woods_tile3.png-a6d32799d2740c153609d54794eda738.stex" ]
+source_file="res://Assets/Tileset/Woods/tree1woodless.png"
+dest_files=[ "res://.import/tree1woodless.png-11d0eaa17217a086755284ee5f0e2816.stex" ]
 
 [params]
 
