@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grasslands_tile3.png-8e727932a4e84586b3dd9c0bf8fd383c.stex"
+path="res://.import/shade2.png-0659c0e5ada54301850f5275810369dc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tileset/grasslands_tile3.png"
-dest_files=[ "res://.import/grasslands_tile3.png-8e727932a4e84586b3dd9c0bf8fd383c.stex" ]
+source_file="res://Assets/Tileset/Grasslands/shade2.png"
+dest_files=[ "res://.import/shade2.png-0659c0e5ada54301850f5275810369dc.stex" ]
 
 [params]
 
