@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hills_tile1.png-5b23a6108e307679867fb8eb14f747c7.stex"
+path="res://.import/hill1.png-9cc36259e8d45c7ccba148aaf9472f1b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tileset/hills_tile1.png"
-dest_files=[ "res://.import/hills_tile1.png-5b23a6108e307679867fb8eb14f747c7.stex" ]
+source_file="res://Assets/Tileset/Hills/hill1.png"
+dest_files=[ "res://.import/hill1.png-9cc36259e8d45c7ccba148aaf9472f1b.stex" ]
 
 [params]
 
